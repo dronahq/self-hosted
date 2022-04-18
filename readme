@@ -1,0 +1,5 @@
+open .env file and update
+1) builder_url
+2) cookie domain
+3) add 'LICENSE_KEY='A4556673-B4B3-11EC-A3C7-0A62665F1D4F' at bottom
+run "sudo docker-compose up"

@@ -1,0 +1,7 @@
+services:
+    
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./storage/certbot/www/:/var/www/certbot/:rw
+      - ./storage/certbot/conf/:/etc/letsencrypt/:rw

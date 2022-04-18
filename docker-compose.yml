@@ -1,0 +1,49 @@
+services:
+
+  mysqldb:
+    image: mysql:5.6.51
+    container_name: dronahq-self-hosted-mysqldb
+    platform: linux
+    restart: always
+    env_file: mysql.env
+    volumes:
+      - ./init/mysql-init.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      - ./storage/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  mongodb:
+    image: mongo:4.4.13
+    container_name: dronahq-self-hosted-mongodb
+    platform: linux
+    restart: always
+    env_file: mongo.env
+    volumes:
+      - ./init/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
+      - ./init/mongodump:/mongodump
+      - ./storage/mongodb:/data/db
+    ports:
+      - 27017:27017
+
+  webserver:
+    image: nginx:1.21
+    container_name: dronahq-self-hosted-webserver
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./storage/certbot/www:/var/www/certbot/:ro
+      - ./storage/certbot/conf/:/etc/nginx/ssl/:ro
+
+  webapp:
+    image: dronahq/self-hosted:dev
+    container_name: dronahq-self-hosted-webapp
+    restart: always
+    volumes:
+      - ./.env:/app/.env:ro
+      - ./storage/files:/app/files:rw
+    ports:
+      - 8080:8080
+    # command: bash -c "npm install && npm start"

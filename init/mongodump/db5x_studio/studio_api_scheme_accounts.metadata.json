@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"5de5644acf4f4a5c9d355e4144f4584c","collectionName":"studio_api_scheme_accounts","type":"collection"}
