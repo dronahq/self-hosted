@@ -5,7 +5,7 @@ services:
     container_name: dronahq-self-hosted-mysqldb
     platform: linux
     restart: always
-    env_file: .env
+    env_file: dronahq.env
     volumes:
       - ./init/mysql-init.sql:/docker-entrypoint-initdb.d/schema.sql:ro
       - ./storage/mysql:/var/lib/mysql
@@ -17,7 +17,7 @@ services:
     container_name: dronahq-self-hosted-mongodb
     platform: linux
     restart: always
-    env_file: .env
+    env_file: dronahq.env
     volumes:
       - ./init/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
       - ./init/mongodump:/mongodump
@@ -38,11 +38,11 @@ services:
       - ./storage/certbot/conf/:/etc/nginx/ssl/:ro
 
   webapp:
-    image: dronahq/self-hosted:1.0.0
+    image: dronahq/self-hosted:1.1.0
     container_name: dronahq-self-hosted-webapp
     restart: always
     volumes:
-      - ./.env:/app/.env:ro
+      - ./dronahq.env:/app/.env:ro
       - ./storage/files:/app/files:rw
     ports:
       - 8080:8080
