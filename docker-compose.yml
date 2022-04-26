@@ -1,7 +1,7 @@
 services:
 
   mysqldb:
-    image: mysql:5.6.51
+    image: mysql:oracle
     container_name: dronahq-self-hosted-mysqldb
     platform: linux
     restart: always
@@ -13,7 +13,7 @@ services:
       - 3306:3306
 
   mongodb:
-    image: mongo:4.4.13
+    image: mongo
     container_name: dronahq-self-hosted-mongodb
     platform: linux
     restart: always
@@ -26,7 +26,7 @@ services:
       - 27017:27017
 
   webserver:
-    image: nginx:1.21
+    image: nginx
     container_name: dronahq-self-hosted-webserver
     ports:
       - 80:80
@@ -38,7 +38,7 @@ services:
       - ./storage/certbot/conf/:/etc/nginx/ssl/:ro
 
   webapp:
-    image: dronahq/self-hosted:1.1.0
+    image: dronahq/self-hosted:1.2.3
     container_name: dronahq-self-hosted-webapp
     restart: always
     volumes:

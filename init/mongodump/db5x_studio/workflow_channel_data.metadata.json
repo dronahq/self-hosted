@@ -1,1 +1,1 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"1a94bcee03c949a6b4af1da05267db50","collectionName":"workflow_channel_data","type":"collection"}
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"a0ea6565ad6f4699b8bf8b7f932d582a","collectionName":"workflow_channel_data","type":"collection"}
