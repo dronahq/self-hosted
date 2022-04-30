@@ -9,7 +9,7 @@ services:
     volumes:
       - ./init/mysql-init.sql:/docker-entrypoint-initdb.d/schema.sql:ro
       - ./storage/mysql:/var/lib/mysql
-      - ./init/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./init/my.cnf:/etc/mysql/conf.d/my.cnf:ro
     ports:
       - 3306:3306
 
@@ -39,7 +39,7 @@ services:
       - ./storage/certbot/conf/:/etc/nginx/ssl/:ro
 
   webapp:
-    image: dronahq/self-hosted:1.2.4
+    image: dronahq/self-hosted:1.2.5
     container_name: dronahq-self-hosted-webapp
     restart: always
     volumes:
