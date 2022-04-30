@@ -39,7 +39,7 @@ services:
       - ./storage/certbot/conf/:/etc/nginx/ssl/:ro
 
   webapp:
-    image: dronahq/self-hosted:1.2.5
+    image: dronahq/self-hosted:1.2.6
     container_name: dronahq-self-hosted-webapp
     restart: always
     volumes:
