@@ -159,7 +159,7 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
 
   echo "LICENSE_KEY=$licenseKey" >> dronahq.env
 
-  status=`curl --silent --connect-timeout 8 --output /dev/null https://license.dronahq.com/validate?key=$licenseKey -I -w "%{http_code}\n"`
+  status=`curl --insecure --silent --connect-timeout 8 --output /dev/null https://license.dronahq.com/validate?key=$licenseKey -I -w "%{http_code}\n"`
 
   # echo "$status"
 
@@ -251,7 +251,7 @@ echo " -- ${GREEN}${BOLD}!! DRONAHQ IS BOOTING !!${NORMAL} --"
 
 printf "%s%s%s%s" "Waiting for DronaHQ to start up... " "${RED}${BOLD}" "<Pressing Ctrl-C may prevent proper start-up>" "$NORMAL"
 
-sleep 3m
+sleep 180
 
 # NB: empty stuff to fully wipe out previous line completely
 printf "\r%s%s%s%s%s%s%s%s" "$MAGENTA" 'Check out your ' "$BOLD" 'BROWSER' "${NORMAL}${MAGENTA}" ' for some awesomeness!!!' "$NORMAL" '                              '

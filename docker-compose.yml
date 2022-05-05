@@ -39,12 +39,13 @@ services:
       - ./storage/certbot/conf/:/etc/nginx/ssl/:ro
 
   webapp:
-    image: dronahq/self-hosted:1.2.6
+    image: dronahq/self-hosted:1.2.7
     container_name: dronahq-self-hosted-webapp
     restart: always
     volumes:
       - ./dronahq.env:/app/.env:ro
       - ./storage/files:/app/files:rw
+      - ./storage/private:/app/private:rw
     ports:
       - 8080:8080
     # command: bash -c "npm install && npm start"
