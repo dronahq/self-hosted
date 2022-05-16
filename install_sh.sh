@@ -29,6 +29,7 @@ else
 fi
 
 error_exit() {
+  echo ''
   echo "${RED}${BOLD}ERROR${NORMAL}${BOLD}: $1${NORMAL}"
   shift
   while [ "$#" -gt "0" ]; do
@@ -50,7 +51,7 @@ log_step() {
 
 log_warn() {
   echo ''
-  echo "${GREEN}${BOLD}INFO${NORMAL}${BOLD}: $1${NORMAL}"
+  echo "${CYAN}${BOLD}WARNING${NORMAL}${BOLD}: $1${NORMAL}"
   shift
   while [ "$#" -gt "0" ]; do
     echo " - $1"
