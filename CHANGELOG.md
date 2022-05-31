@@ -1,8 +1,8 @@
 # Change Log
 
-You will find article for installing self-hosted version here  [here](https://community.dronahq.com/t/installing-self-hosted-dronahq/1207).
+You will find article for installing self-hosted version here  [here](https://community.dronahq.com/t/installing-self-hosted-dronahq/1207){:target="_blank"}.
 
-You will find article for updating your self-hosted version here  [here](https://community.dronahq.com/t/updating-dronahq-self-hosted/1178).
+You will find article for updating your self-hosted version here  [here](https://community.dronahq.com/t/updating-dronahq-self-hosted/1178){:target="_blank"}.
 
 All notable changes to this project will be documented in this file.
 
@@ -26,4 +26,4 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Controls and Functions were not publishing
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/){:target="_blank"}.
