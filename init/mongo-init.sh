@@ -11,7 +11,7 @@ db.createUser({
   pwd: '$MONGO_INITDB_PWD',
   roles: [{
     role: "userAdminAnyDatabase",
-    db: "admin" 
+    db: "admin"
   }, {
     role: 'readWrite',
     db: 'db5x_studio'
