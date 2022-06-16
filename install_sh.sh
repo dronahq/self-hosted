@@ -119,7 +119,7 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
   # NB: this is to make onprem containers to all get named the same.
   cd self-hosted
   if ! command_present unzip; then
-    git checkout master # TODO(hirday): delete this.
+    git checkout main # TODO(hirday): delete this.
   fi
   DOCKER_CONTEXT="$(pwd)"
 
