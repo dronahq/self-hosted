@@ -14,7 +14,7 @@ services:
       - 3306:3306
 
   mongodb:
-    image: mongo
+    image: mongo:5.0.11
     container_name: dronahq-self-hosted-mongodb
     platform: linux
     restart: always
