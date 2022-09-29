@@ -66,7 +66,9 @@ current_version=$(head -n 1 version)
 
 echo "Current version is ${current_version}"
 
-updates=$(curl -s --insecure "https://license.dronahq.com/api/checkforupdates?empty=false&version=${current_version}" --header 'Authorization: S9wbseRCkzE23fRK5soIkuUBpGW4sLUG')
+license_url="https://license.dronahq.com"
+
+updates=$(curl -s --insecure "${license_url}/api/checkforupdates?empty=false&version=${current_version}" --header 'Authorization: S9wbseRCkzE23fRK5soIkuUBpGW4sLUG')
 
 if [ -z "$updates" ]
 then
@@ -117,7 +119,7 @@ if [[ "$($MAYBE_SUDO docker images -q dronahq/self-hosted:$current_version 2> /d
 fi
 
 log_step "Fetching docker-compose file for target version"
-curl --insecure https://license.dronahq.com/repository/docker-compose/$target_version --header 'Authorization: S9wbseRCkzE23fRK5soIkuUBpGW4sLUG' -o docker-compose.yml
+curl --insecure $license_url/repository/docker-compose/$target_version --header 'Authorization: S9wbseRCkzE23fRK5soIkuUBpGW4sLUG' -o docker-compose.yml
 
 log_step "Creating new container"
 $MAYBE_SUDO docker-compose up -d webapp
@@ -136,7 +138,7 @@ rootpassword=$(grep MYSQL_ROOT_PASSWORD ./dronahq.env | cut -d "=" -f2 | cut -d 
 
 log_step "Fetching updates..."
 
-curl --insecure "https://license.dronahq.com/api/getdbupdates?empty=false&current_version=${current_version}&target_version=${target_version}" --header 'Authorization: S9wbseRCkzE23fRK5soIkuUBpGW4sLUG' -o update.sql
+curl --insecure "${license_url}/api/getdbupdates?empty=false&current_version=${current_version}&target_version=${target_version}" --header 'Authorization: S9wbseRCkzE23fRK5soIkuUBpGW4sLUG' -o update.sql
 
 log_step "Copying updates to container..."
 

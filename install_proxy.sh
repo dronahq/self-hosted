@@ -117,7 +117,7 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
     log_step 'downloading...'
     curl -L -XGET -o master.zip $DHQ_SELF_HOSTED_LICENSE_URL/self-hosted/master.zip # TODO(hirday): change back to master
     log_step 'unpacking...'
-    unzip master.zip
+    unzip -q master.zip
     mv master self-hosted # TODO(hirday): change back to master
   fi
 

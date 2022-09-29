@@ -40,7 +40,7 @@ services:
       - 443:443
 
   webapp:
-    image: dronahq/self-hosted:2.0.0
+    image: dronahq/self-hosted:2.0.1
     container_name: dronahq-self-hosted-webapp
     restart: always
     volumes:
