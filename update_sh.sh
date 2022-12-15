@@ -70,8 +70,7 @@ license_url="https://license.dronahq.com"
 
 updates=$(curl -s --insecure "${license_url}/api/checkforupdates?empty=false&version=${current_version}" --header 'Authorization: S9wbseRCkzE23fRK5soIkuUBpGW4sLUG')
 
-if [ -z "$updates" ]
-then
+if [ -z "$updates" ]; then
   log_step "No new updates are available for you."
   exit 1
 fi
@@ -79,8 +78,7 @@ fi
 IFS=',' read -r -a update_list <<< "$updates"
 
 echo "Select any version from below list to update to"
-for i in "${update_list[@]}"
-do
+for i in "${update_list[@]}"; do
   echo "$i"
 done
 read -p "Enter target version here: " target_version
@@ -100,6 +98,8 @@ if [[ "$($MAYBE_SUDO docker images -q dronahq/self-hosted:$target_version 2> /de
   $MAYBE_SUDO docker pull dronahq/self-hosted:$target_version
 else
   log_step "Target docker image present locally."
+  log_step "Create dump from previous DB "
+  ./backup_sh.sh
 fi
 
 if [ $( $MAYBE_SUDO docker ps -a | grep dronahq-self-hosted-webapp | wc -l ) -gt 0 ]; then

@@ -1,1 +1,1 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"90557f8b4e674217b51358697764440f","collectionName":"pdf_templates","type":"collection"}
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"27acf5bbc6fd484aaaae23bd5ee4ad86","collectionName":"pdf_templates","type":"collection"}

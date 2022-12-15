@@ -10,7 +10,8 @@ DronaHQ offers a low-code platform to build internal tools. Drag-and-drop UI com
 [DronaHQ self-hosted solution](https://www.dronahq.com/self-hosted-signup) ensures that all access to your data is managed within your own cloud environment. It also provides the flexibility to control how DronaHQ is setup within your infrastructure, the ability to configure logging, scaling, and access to enable custom SAML SSO using providers like Okta and Active Directory.
 
 # Select a DronaHQ version number
-- `1.0.0` - Released on 14/4/2022`
+- `1.0.0` - Released on 14/04/2022`
+- `2.0.8` - Released on 13/12/2022`
 
 Releases are added maintained on [DockerHub](https://hub.docker.com/r/dronahq/self-hosted/tags) and on [DronaHQ Community](https://community.dronahq.com/t/dronahq-self-hosted-releases)
 

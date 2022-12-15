@@ -40,7 +40,7 @@ services:
       - 443:443
 
   webapp:
-    image: dronahq/self-hosted:2.0.1
+    image: dronahq/self-hosted:2.0.8
     container_name: dronahq-self-hosted-webapp
     restart: always
     volumes:
@@ -49,4 +49,3 @@ services:
       - ./storage/private:/app/private:rw
     ports:
       - 8080:8080
-    # command: bash -c "npm install && npm start"
