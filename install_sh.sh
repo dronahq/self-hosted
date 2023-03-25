@@ -59,6 +59,17 @@ log_warn() {
   done
 }
 
+# read -p "Enter DronaHQ License Proxy url. If you dont need to setup proxy, press Enter: " DHQ_SELF_HOSTED_LICENSE_URL
+DHQ_SELF_HOSTED_LICENSE_URL=''
+
+if [ -z "$DHQ_SELF_HOSTED_LICENSE_URL" ]; then
+  DHQ_SELF_HOSTED_LICENSE_URL="https://license.dronahq.com"
+fi
+
+log_step "DronaHQ License Proxy set as $DHQ_SELF_HOSTED_LICENSE_URL"
+
+echo ''
+
 export DISTRO=$( (lsb_release -ds || cat /etc/*release || uname -om) 2>/dev/null | head -n1)
 
 command_present() {
@@ -107,7 +118,7 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
     fi
   else
     log_step 'downloading...'
-    curl -L -XGET -o master.zip https://studio.dronahq.com/onprem/master.zip # TODO(hirday): change back to master
+    curl -L -XGET -o master.zip $DHQ_SELF_HOSTED_LICENSE_URL/self-hosted/master.zip # TODO(hirday): change back to master
     log_step 'unpacking...'
     unzip -q master.zip
     mv master self-hosted # TODO(hirday): change back to master
@@ -115,6 +126,7 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
 
   chmod 755 ./self-hosted/get-docker.sh
   chmod 755 ./self-hosted/get-docker-compose.sh
+  chmod 755 ./self-hosted/backup_sh.sh
 
   # NB: this is to make onprem containers to all get named the same.
   cd self-hosted
@@ -125,9 +137,12 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
 
   cp ./init/nginx.conf nginx.conf
 
-  rootpassword="idQnkrCOLNx5V05k8uPFZjpluOWF6PCO"
-  dbpassword="idQnkrCOLNx5V05k8uPFZjpluOWF6PCO"
+  # rootpassword=$(cat /dev/urandom | base64 | head -c 64)
+  # dbpassword=$(cat /dev/urandom | base64 | head -c 64)
 
+  rootpassword='idQnkrCOLNx5V05k8uPFZjpluOWF6PCO'
+  dbpassword='idQnkrCOLNx5V05k8uPFZjpluOWF6PCO'
+  
   echo "# DronaHQ Environment File" > dronahq.env
 
   echo "BUILDER_URL='http://localhost'" >> dronahq.env
@@ -160,12 +175,14 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
   echo "MONGO_INITDB_USER='dronahq'" >> dronahq.env
   echo "MONGO_INITDB_PWD='$dbpassword'" >> dronahq.env
 
+  echo "DHQ_SELF_HOSTED_LICENSE_URL='$DHQ_SELF_HOSTED_LICENSE_URL'" >> dronahq.env
+
   log_step 'setting environment variables'
   read -p "Enter your license key: " licenseKey
 
   echo "LICENSE_KEY=$licenseKey" >> dronahq.env
 
-  status=`curl --insecure --silent --connect-timeout 8 --output /dev/null https://license.dronahq.com/validate?key=$licenseKey -I -w "%{http_code}\n"`
+  status=`curl --insecure --silent --connect-timeout 8 --output /dev/null $DHQ_SELF_HOSTED_LICENSE_URL/validate?key=$licenseKey -I -w "%{http_code}\n"`
 
   # echo "$status"
 
@@ -272,5 +289,5 @@ echo
 echo "DronaHQ was installed in ~/dronahq. It will run in the background until you manually stop it. If DronaHQ stops you can restart it without losing your data. "
 
 if command_present open; then
-  open 'http://localhost:8080'
+  open 'http://localhost'
 fi

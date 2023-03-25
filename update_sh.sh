@@ -99,6 +99,7 @@ if [[ "$($MAYBE_SUDO docker images -q dronahq/self-hosted:$target_version 2> /de
 else
   log_step "Target docker image present locally."
   log_step "Create dump from previous DB "
+  $MAYBE_SUDO chmod 755 ./backup_sh.sh
   ./backup_sh.sh
 fi
 
@@ -149,9 +150,9 @@ $MAYBE_SUDO docker exec dronahq-self-hosted-mysqldb /bin/sh -c "mysql -u root -p
 
 log_step "Database Update completed."
 
-log_step "Removing temporary files..."
-if [ -f "update.sql" ]; then
-  $MAYBE_SUDO rm update.sql
-fi
+# log_step "Removing temporary files..."
+# if [ -f "update.sql" ]; then
+#   $MAYBE_SUDO rm update.sql
+# fi
 
 log_step "Update successful, Please refresh your browser window to reflect the changes"
