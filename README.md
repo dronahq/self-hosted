@@ -33,8 +33,8 @@ Releases are added maintained on [DockerHub](https://hub.docker.com/r/dronahq/se
 1. Run the command `git clone https://github.com/dronahq/self-hosted.git`.
 1. Run the command `cd self-hosted` to enter the cloned repository's directory.
 1. Edit the `docker-compose.yml` file using VIM (or other text editor) to set the version of DronaHQ you want to install. To do this, replace `X.Y.Z` in `image:dronahq/self-hosted:X.Y.Z` with your desired version. See [Select a DronaHQ version number](#select-a-dronahq-version-number) to help you choose a version.
-1. Run `./install.sh` to install  Docker and Docker Compose.
-1. In your `.env` (this file is only created after running `./install.sh`) add the following:
+1. Run `./install_sh.sh` to install  Docker and Docker Compose.
+1. In your `.env` (this file is only created after running `./install_sh.sh`) add the following:
 
    ```docker
    # License key granted to you by DronaHQ
@@ -65,8 +65,8 @@ Spin up a new EC2 instance. If using AWS, use the following steps:
 1. Run the command `git clone https://github.com/dronahq/self-hosted.git`.
 1. Run the command `cd self-hosted` to enter the cloned repository's directory.
 1. Edit the `docker-compose.yml` file using VIM (or other text editor) to set the version of DronaHQ you want to install. To do this, replace `X.Y.Z` in `image:dronahq/self-hosted:X.Y.Z` with your desired version. See [Select a DronaHQ version number](#select-a-dronahq-version-number) to help you choose a version.
-1. Run `./install.sh` to install  Docker and Docker Compose.
-1. In your `.env` (this file is only created after running `./install.sh`) add the following:
+1. Run `./install_sh.sh` to install  Docker and Docker Compose.
+1. In your `.env` (this file is only created after running `./install_sh.sh`) add the following:
 
    ```docker
    # License key granted to you by DronaHQ
@@ -101,8 +101,8 @@ Spin up a new EC2 instance. If using AWS, use the following steps:
 1. Run the command `git clone https://github.com/dronahq/self-hosted.git`.
 1. Run the command `cd self-hosted` to enter the cloned repository's directory.
 1. Edit the `docker-compose.yml` file using VIM (or other text editor) to set the version of DronaHQ you want to install. To do this, replace `X.Y.Z` in `image:dronahq/self-hosted:X.Y.Z` with your desired version. See [Select a DronaHQ version number](#select-a-dronahq-version-number) to help you choose a version.
-1. Run `./install.sh` to install  Docker and Docker Compose.
-1. In your `.env` (this file is only created after running `./install.sh`) add the following:
+1. Run `./install_sh.sh` to install  Docker and Docker Compose.
+1. In your `.env` (this file is only created after running `./install_sh.sh`) add the following:
 
    ```docker
    # License key granted to you by DronaHQ
@@ -129,8 +129,8 @@ Spin up a new EC2 instance. If using AWS, use the following steps:
 1. Run the command `git clone https://github.com/dronahq/self-hosted.git`.
 1. Run the command `cd self-hosted` to enter the cloned repository's directory.
 1. Edit the `docker-compose.yml` file using VIM (or other text editor) to set the version of DronaHQ you want to install. To do this, replace `X.Y.Z` in `image:dronahq/self-hosted:X.Y.Z` with your desired version. See [Select a DronaHQ version number](#select-a-dronahq-version-number) to help you choose a version.
-1. Run `./install.sh` to install  Docker and Docker Compose.
-1. In your `.env` (this file is only created after running `./install.sh`) add the following:
+1. Run `./install_sh.sh` to install  Docker and Docker Compose.
+1. In your `.env` (this file is only created after running `./install_sh.sh`) add the following:
 
    ```docker
    # License key granted to you by DronaHQ
