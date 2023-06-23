@@ -1,1 +1,0 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"b6f1bc99ac3d48ca93e4a7fd6d959d66","collectionName":"workflow_channel_data","type":"collection"}

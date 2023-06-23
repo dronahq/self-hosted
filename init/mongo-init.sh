@@ -2,7 +2,7 @@
 
 set -e
 
-mongo <<EOF
+mongosh <<EOF
 
 use admin
 
@@ -20,4 +20,4 @@ db.createUser({
 
 EOF
 
-mongorestore /mongodump
+mongorestore --archive < /mongo-init.dump

@@ -2,8 +2,8 @@ services:
 
   mysqldb:
     image: mysql:oracle
-    container_name: dronahq-self-hosted-mysqldb
     platform: linux
+    container_name: dronahq-self-hosted-mysqldb
     restart: always
     env_file: dronahq.env
     command: --default-authentication-plugin=mysql_native_password
@@ -16,19 +16,20 @@ services:
 
   mongodb:
     image: mongo:5.0.11
-    container_name: dronahq-self-hosted-mongodb
     platform: linux
+    container_name: dronahq-self-hosted-mongodb
     restart: always
     env_file: dronahq.env
     volumes:
       - ./init/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
-      - ./init/mongodump:/mongodump
+      - ./init/mongo-init.dump:/mongo-init.dump
       - ./storage/mongodb:/data/db
     ports:
       - 27017:27017
 
   webserver:
     image: nginx
+    platform: linux
     container_name: dronahq-self-hosted-webserver
     restart: always
     volumes:
@@ -40,7 +41,8 @@ services:
       - 443:443
 
   webapp:
-    image: dronahq/self-hosted:2.1.6
+    image: dronahq/self-hosted:2.2.4
+    platform: linux/amd64
     container_name: dronahq-self-hosted-webapp
     restart: always
     volumes:
