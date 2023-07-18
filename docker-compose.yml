@@ -41,7 +41,7 @@ services:
       - 443:443
 
   webapp:
-    image: dronahq/self-hosted:2.2.4
+    image: dronahq/self-hosted:2.2.6
     platform: linux/amd64
     container_name: dronahq-self-hosted-webapp
     restart: always
