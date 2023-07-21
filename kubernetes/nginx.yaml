@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webserver-config
+data:
+  default.conf: |
+    server {
+      listen                  80;
+      server_name             dronahq;
+      location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_pass http://webapp-svc:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+      - image: nginx:1.13.6-alpine
+        imagePullPolicy: Always
+        name: webserver
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: webserver-configs
+          mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: webserver-configs
+          configMap:
+            name: webserver-config
