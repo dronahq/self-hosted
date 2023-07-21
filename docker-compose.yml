@@ -1,5 +1,17 @@
 services:
 
+  webapp:
+    image: dronahq/self-hosted:2.2.6
+    platform: linux/amd64
+    container_name: dronahq-self-hosted-webapp
+    restart: always
+    volumes:
+      - ./dronahq.env:/app/.env:ro
+      - ./storage/files:/app/files:rw
+      - ./storage/private:/app/private:rw
+    ports:
+      - 8080:8080
+
   mysqldb:
     image: mysql:oracle
     platform: linux
@@ -39,15 +51,3 @@ services:
     ports:
       - 80:80
       - 443:443
-
-  webapp:
-    image: dronahq/self-hosted:2.2.6
-    platform: linux/amd64
-    container_name: dronahq-self-hosted-webapp
-    restart: always
-    volumes:
-      - ./dronahq.env:/app/.env:ro
-      - ./storage/files:/app/files:rw
-      - ./storage/private:/app/private:rw
-    ports:
-      - 8080:8080
