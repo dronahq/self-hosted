@@ -7,14 +7,14 @@ mongosh <<EOF
 use admin
 
 db.createUser({
-  user: '$MONGODB_USER',
-  pwd: '$MONGODB_PASSWORD',
+  user: '$MONGO_INITDB_USER',
+  pwd: '$MONGO_INITDB_PWD',
   roles: [{
     role: "userAdminAnyDatabase",
     db: "admin"
   }, {
     role: 'readWrite',
-    db: '$MONGODB_DATABASE'
+    db: 'db5x_studio'
   }]
 })
 
