@@ -1,7 +1,7 @@
 services:
 
   webapp:
-    image: dronahq/self-hosted:2.2.6
+    image: dronahq/self-hosted:2.3.7
     platform: linux/amd64
     container_name: dronahq-self-hosted-webapp
     restart: always

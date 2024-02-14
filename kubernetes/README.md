@@ -48,16 +48,16 @@ DronaHQ's Kubernetes deployment is configured using a [set of manifests](https:/
     cd master/kubernetes
 
 ## 2. Configure version
-In dronahq-webapp.yaml, change the image tag to indicate the [version of DronaHQ](https://hub.docker.com/r/dronahq/self-hosted/tags) to install. The following example specifies the image tag to install version 2.2.7.
+In `dronahq-webapp.yaml`, change the image tag to indicate the [version of DronaHQ](https://hub.docker.com/r/dronahq/self-hosted/tags) to install. The following example specifies the image tag to install version 2.2.7.
 
     image: dronahq/self-hosted:2.2.7
 
 ## 3. Configure secrets
-Copy the dronahq-secrets.template.yaml file to a new file named dronahq-secrets.yaml. This file sets the configuration options for your deployment, and stores them as [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
+Copy the `dronahq-secrets.template.yaml` file to a new file named `dronahq-secrets.yaml`. This file sets the configuration options for your deployment, and stores them as [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
     cp dronahq-secrets.template.yaml dronahq-secrets.yaml
 
-Set the configuration options for your instance. Note that values in this file need to be encoded in base64.
+Set the configuration options for your instance. Note that values in this file need to be encoded in `base64`.
 
 > Use simple echo command to convert your text to base64 encoded string
 >
@@ -104,10 +104,10 @@ Once the pod is running, verify the installation by port forwarding to `localhos
 You can then access DronaHQ at `http://localhost:8080/`.
 
 ## Additional steps
-DronaHQ strongly recommends you externalize your database, configure SSL, and keep up-to-date with the latest version of DronaHQ. Setting environment variables is often necessary to configure self-hosted features.
+You need to externalize your database to a remote host. DronaHQ strongly recommends you to configure SSL, and keep up-to-date with the latest version of DronaHQ. Setting environment variables is often necessary to configure self-hosted features.
 
 ### Externalize database
-By default, the DronaHQ Kubernetes installation uses remotely hosted managed database instances of MySQl and MongoDB to make it more maintainable, scalable and reliable. You can make your database DronaHQ ready by following database steps.
+By default, the DronaHQ Kubernetes installation uses remotely hosted managed database instances of MySQL and MongoDB to make it more maintainable, scalable and reliable. You can make your database DronaHQ ready by following database steps.
 These instructions explain how to set up DronaHQ with an external database.
 
 1. Move inside directory `external-database`
