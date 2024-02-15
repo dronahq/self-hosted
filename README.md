@@ -9,11 +9,7 @@ DronaHQ offers a low-code platform to build internal tools. Drag-and-drop UI com
 
 [DronaHQ self-hosted solution](https://www.dronahq.com/self-hosted-signup) ensures that all access to your data is managed within your own cloud environment. It also provides the flexibility to control how DronaHQ is setup within your infrastructure, the ability to configure logging, scaling, and access to enable custom SAML SSO using providers like Okta and Active Directory.
 
-# Select a DronaHQ version number
-- `1.0.0` - Released on 14/04/2022`
-- `2.0.8` - Released on 13/12/2022`
-
-Releases are added maintained on [DockerHub](https://hub.docker.com/r/dronahq/self-hosted/tags) and on [DronaHQ Community](https://community.dronahq.com/t/dronahq-self-hosted-releases)
+Releases are added and maintained on [DockerHub](https://hub.docker.com/r/dronahq/self-hosted/tags) and on [DronaHQ Community](https://community.dronahq.com/t/dronahq-self-hosted-releases)
 
 ## Single Deployments
 
@@ -45,8 +41,6 @@ Releases are added maintained on [DockerHub](https://hub.docker.com/r/dronahq/se
 1. Run `sudo docker-compose ps` to make sure all the containers are up and running.
 1. Navigate to your server's IP address in a web browser. DronaHQ should now be running on port `8080`.
 1. Click Activate, since we're starting from a clean slate. The first user to create an account on an instance becomes the administrator.
-
-
 
 ### AWS Deploy With EC2
 

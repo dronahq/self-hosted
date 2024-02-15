@@ -4,6 +4,10 @@ else
   export MAYBE_SUDO=""
 fi
 
+if [ ! -d "backups" ]; then
+  mkdir backups
+fi
+
 docker_db_dump() {
   echo "starting db backup"
   export MYSQLDB_BACKUP="mysql-init.sql"
@@ -19,15 +23,16 @@ create_zip() {
   TIMESTAMP=$(date +%s)
   DIRNAME="backup_${TIMESTAMP}"
   # cd $INSTALL_DIRECTORY
-  mkdir -p ${DIRNAME}/{init/mongodump/db5x_studio,storage}
-  cp -R ./storage/files ${DIRNAME}/storage
-  cp -R ./{docker-compose.yml,dronahq.env,nginx.conf,certbot-docker-compose.yml} ${DIRNAME}
-  cp -R ./init/{mongo-init.sh,my.cnf,nginx.conf,nginx-ssl-default.conf} ${DIRNAME}/init
-  # cd -
-  docker_db_dump "./${DIRNAME}/init" "./${DIRNAME}/init/mongodump/db5x_studio"
-  cd ..
-  $MAYBE_SUDO tar -czvf ${DIRNAME}.tar.gz ./self-hosted/${DIRNAME} --remove-files
+  mkdir -p backups/${DIRNAME}/{init/mongodump/db5x_studio,storage}
+  cp -R ./storage/files backups/${DIRNAME}/storage
+  cp -R ./{docker-compose.yml,dronahq.env,nginx.conf,certbot-docker-compose.yml} backups/${DIRNAME}
+  cp -R ./init/{mongo-init.sh,my.cnf,nginx.conf,nginx-ssl-default.conf} backups/${DIRNAME}/init
+
+  docker_db_dump "backups/${DIRNAME}/init" "backups/${DIRNAME}/init/mongodump/db5x_studio"
+
+  $MAYBE_SUDO tar -czvf backups/${DIRNAME}.tar.gz ./backups/${DIRNAME} --remove-files
+  $MAYBE_SUDO rm -rf backup/${DIRNAME}
   echo "====================zip creation end==============="
-  cd self-hosted
+
 }
 create_zip

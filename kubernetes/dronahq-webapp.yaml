@@ -78,3 +78,15 @@ spec:
               cpu: "0.5"
               memory: 1024M
       restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-svc
+spec:
+  selector:
+    app: webapp
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
