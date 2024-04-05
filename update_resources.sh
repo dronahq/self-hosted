@@ -63,12 +63,10 @@ log_warn() {
 }
 
 # NB: trim trailing slash on $TMPDIR as different OS's do it differently
-INSTALL_DIRECTORY="$HOME/dronahq"
-DOCKER_CONTEXT="$INSTALL_DIRECTORY/self-hosted"
-
-log_step "Changing working directory to $DOCKER_CONTEXT"
-
-cd "$DOCKER_CONTEXT"
+# INSTALL_DIRECTORY="$HOME/dronahq"
+# DOCKER_CONTEXT="$INSTALL_DIRECTORY/self-hosted"
+# log_step "Changing working directory to $DOCKER_CONTEXT"
+# cd "$DOCKER_CONTEXT"
 
 log_step 'Downloading resources...'
 
