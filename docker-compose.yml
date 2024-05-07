@@ -13,7 +13,7 @@ services:
       - 8080:8080
 
   mysqldb:
-    image: mysql:8.3.0-oracle
+    image: mysql:oracle
     platform: linux
     container_name: dronahq-self-hosted-mysqldb
     restart: always
