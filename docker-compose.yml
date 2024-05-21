@@ -13,12 +13,11 @@ services:
       - 8080:8080
 
   mysqldb:
-    image: mysql:oracle
+    image: mysql:8.0.36-oracle
     platform: linux
     container_name: dronahq-self-hosted-mysqldb
     restart: always
     env_file: dronahq.env
-    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./init/mysql-init.sql:/docker-entrypoint-initdb.d/schema.sql:ro
       - ./storage/mysql:/var/lib/mysql
