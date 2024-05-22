@@ -69,11 +69,19 @@ command_present() {
 
 export DRONAHQ_LICENSE_URL="https://license.dronahq.com"
 
-log_step "Checking for updates..."
+current_version=''
 
-current_version=$(head -n 1 version)
+if [ -f "version" ]; then
+  current_version=$(head -n 1 version)
+fi
+
+if [ -z "$current_version" ]; then
+  read -p "Enter current version to update from: " current_version
+fi
 
 echo "Current version is ${current_version}"
+
+log_step "Checking for updates..."
 
 updates=$(curl -s --insecure "${DRONAHQ_LICENSE_URL}/api/checkforupdates?empty=false&version=${current_version}" --header 'Authorization: S9wbseRCkzE23fRK5soIkuUBpGW4sLUG')
 

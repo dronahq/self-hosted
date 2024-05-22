@@ -105,16 +105,19 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
 
   if ! command_present unzip; then
     log_warn '`unzip` not found!'
-    log_warn 'Attempting to git clone instead'
-    if command_present git; then
-      log_step 'cloning...'
-      git clone https://github.com/dronahq/self-hosted.git
-    elif command_present yum; then
-      log_warn 'You did not have git so installing'
-      sudo yum install git
-      git clone https://github.com/dronahq/self-hosted.git
-    else
-      error_exit "Please install git or unzip before continuing"
+    # log_warn 'Attempting to git clone instead'
+    # if command_present git; then
+    #   log_step 'cloning...'
+    #   git clone https://github.com/dronahq/self-hosted.git
+    # elif command_present yum; then
+    #   log_warn 'You did not have git so installing'
+    #   sudo yum install git
+    #   git clone https://github.com/dronahq/self-hosted.git
+    # else
+    #   error_exit "Please install git or unzip before continuing"
+    # fi
+    if command_present apt-get; then
+      MAYBE_SUDO apt-get install unzip
     fi
   else
     log_step 'downloading...'
