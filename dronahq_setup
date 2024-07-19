@@ -89,20 +89,34 @@ if [ -f ./dronahq.env ]; then
 fi
 
 echo "# DronaHQ Environment File" >dronahq.env
+echo "BUILDER_URL=http://localhost" >>dronahq.env
 echo "" >>dronahq.env
-echo "BUILDER_URL='http://localhost'" >>dronahq.env
+echo "MYSQL_HOST=dronahq-self-hosted-mysqldb" >>dronahq.env
+echo "MYSQL_USER=dronahq" >>dronahq.env
+echo "MYSQL_PASSWORD=" >>dronahq.env
+echo "MYSQL_DATABASE=db5x" >>dronahq.env
+echo "MYSQL_PORT=3306" >>dronahq.env
 echo "" >>dronahq.env
-echo "MYSQL_HOST='<MYSQL HOST>'" >>dronahq.env
-echo "MYSQL_USER='<MYSQL USER>'" >>dronahq.env
-echo "MYSQL_PASSWORD='<MYSQL PASSWORD>'" >>dronahq.env
-echo "MYSQL_DATABASE='db5x'" >>dronahq.env
+echo "MONGODB_HOST=dronahq-self-hosted-mongodb" >>dronahq.env
+echo "MONGODB_USER=dronahq" >>dronahq.env
+echo "MONGODB_PASSWORD=" >>dronahq.env
+echo "MONGODB_DATABASE=db5x_studio" >>dronahq.env
+echo "MONGODB_PORT=27017" >>dronahq.env
 echo "" >>dronahq.env
-echo "MONGODB_HOST='<MONGO HOST>'" >>dronahq.env
-echo "MONGODB_USER='<MONGO USER>'" >>dronahq.env
-echo "MONGODB_PASSWORD='<MONGO PASSWORD>'" >>dronahq.env
-echo "MONGODB_DATABASE='db5x_studio'" >>dronahq.env
+echo "# Default variables required for Mongo and MySQL container" >>dronahq.env
+echo "MYSQL_ROOT_PASSWORD=" >>dronahq.env
+echo "MYSQL_DATABASE=db5x" >>dronahq.env
 echo "" >>dronahq.env
-echo "LICENSE_KEY='<DRONAHQ LICENSE KEY>'" >>dronahq.env
+echo "MONGO_INITDB_ROOT_USERNAME=root" >>dronahq.env
+echo "MONGO_INITDB_ROOT_PASSWORD=" >>dronahq.env
+echo "MONGO_INITDB_DATABASE=db5x_studio" >>dronahq.env
+echo "" >>dronahq.env
+echo "# Your dronahq license key here" >>dronahq.env
+echo "LICENSE_KEY=" >>dronahq.env
+echo "" >>dronahq.env
+echo "# Add other environment variables" >>dronahq.env
+echo "# Reference: https://docs.dronahq.com/self-hosted-deployment/environment-variables" >>dronahq.env
+echo "#" >>dronahq.env
 echo "" >>dronahq.env
 
 log_step "Hurray ! Your setup is done."
