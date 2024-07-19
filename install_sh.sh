@@ -147,43 +147,44 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
   dbpassword='idQnkrCOLNx5V05k8uPFZjpluOWF6PCO'
   
   echo "# DronaHQ Environment File" > dronahq.env
+  echo "BUILDER_URL=http://localhost" >> dronahq.env
+  echo "" >> dronahq.env
 
-  echo "BUILDER_URL='http://localhost'" >> dronahq.env
-
-  echo "DHQ_MYSQL_HOST='dronahq-self-hosted-mysqldb'" >> dronahq.env
-  echo "DHQ_MYSQL_USER='dronahq'" >> dronahq.env
-  echo "DHQ_MYSQL_PASSWORD='$dbpassword'" >> dronahq.env
-  echo "DHQ_MYSQL_DATABASE='db5x'" >> dronahq.env
-  echo "DHQ_MYSQL_PORT='3306'" >> dronahq.env
+  echo "MYSQL_HOST=dronahq-self-hosted-mysqldb" >> dronahq.env
+  echo "MYSQL_USER=dronahq" >> dronahq.env
+  echo "MYSQL_PASSWORD=$dbpassword" >> dronahq.env
+  echo "MYSQL_DATABASE=db5x" >> dronahq.env
+  echo "MYSQL_PORT=3306" >> dronahq.env
+  echo "" >> dronahq.env
   
-  echo "DHQ_MONGODB_HOST='dronahq-self-hosted-mongodb'" >> dronahq.env
-  echo "DHQ_MONGODB_USER='dronahq'" >> dronahq.env
-  echo "DHQ_MONGODB_PASSWORD='$dbpassword'" >> dronahq.env
-  echo "DHQ_MONGODB_DATABASE='db5x_studio'" >> dronahq.env
-  echo "DHQ_MONGODB_PORT='27017'" >> dronahq.env
+  echo "MONGODB_HOST=dronahq-self-hosted-mongodb" >> dronahq.env
+  echo "MONGODB_USER=dronahq" >> dronahq.env
+  echo "MONGODB_PASSWORD=$dbpassword" >> dronahq.env
+  echo "MONGODB_DATABASE=db5x_studio" >> dronahq.env
+  echo "MONGODB_PORT=27017" >> dronahq.env
+  echo "" >> dronahq.env
   
-  echo "DHQ_AUDIT_LOG_MYSQL_HOST='dronahq-self-hosted-mysqldb'" >> dronahq.env
-  echo "DHQ_AUDIT_LOG_MYSQL_USER='dronahq'" >> dronahq.env
-  echo "DHQ_AUDIT_LOG_MYSQL_PASSWORD='$dbpassword'" >> dronahq.env
-  echo "DHQ_AUDIT_LOG_MYSQL_DATABASE='dhq_audit_log'" >> dronahq.env
-  echo "DHQ_AUDIT_LOG_MYSQL_PORT='3306'" >> dronahq.env
+  echo "# Default variables required for Mongo and MySQL container" >> dronahq.env
+  echo "MYSQL_ROOT_PASSWORD=$rootpassword" >> dronahq.env
+  echo "MYSQL_DATABASE=db5x" >> dronahq.env
+  echo "" >> dronahq.env
   
-  echo "MYSQL_ROOT_PASSWORD='$rootpassword'" >> dronahq.env
-  echo "MYSQL_DATABASE='db5x'" >> dronahq.env
-  echo "MYSQL_USER='dronahq'" >> dronahq.env
-  echo "MYSQL_PASSWORD='$dbpassword'" >> dronahq.env
+  echo "MONGO_INITDB_ROOT_USERNAME=root" >> dronahq.env
+  echo "MONGO_INITDB_ROOT_PASSWORD=$rootpassword" >> dronahq.env
+  echo "MONGO_INITDB_DATABASE=db5x_studio" >> dronahq.env
+  echo "" >> dronahq.env
   
-  echo "MONGO_INITDB_ROOT_USERNAME='root'" >> dronahq.env
-  echo "MONGO_INITDB_ROOT_PASSWORD='$rootpassword'" >> dronahq.env
-  echo "MONGO_INITDB_USER='dronahq'" >> dronahq.env
-  echo "MONGO_INITDB_PWD='$dbpassword'" >> dronahq.env
-
-  echo "DHQ_SELF_HOSTED_LICENSE_URL='$DHQ_SELF_HOSTED_LICENSE_URL'" >> dronahq.env
-
   log_step 'setting environment variables'
   read -p "Enter your license key: " licenseKey
 
+  echo "# Your dronahq license key here" >> dronahq.env
   echo "LICENSE_KEY=$licenseKey" >> dronahq.env
+  echo "" >> dronahq.env
+  
+  echo "# Add other environment variables" >> dronahq.env
+  echo "# Reference: https://docs.dronahq.com/self-hosted-deployment/environment-variables" >> dronahq.env
+  echo "# " >> dronahq.env
+  echo "" >> dronahq.env
 
   status=`curl --insecure --silent --connect-timeout 8 --output /dev/null $DHQ_SELF_HOSTED_LICENSE_URL/validate?key=$licenseKey -I -w "%{http_code}\n"`
 
