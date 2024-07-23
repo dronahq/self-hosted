@@ -12,37 +12,72 @@ else
 fi
 
 if [ -t 1 ]; then
+
   export NORMAL="$(tput sgr0)"
+
+  export BLACK="$(tput setaf 0)"
   export RED="$(tput setaf 1)"
   export GREEN="$(tput setaf 2)"
+  export YELLOW="$(tput setaf 3)"
+  export BLUE="$(tput setaf 4)"
   export MAGENTA="$(tput setaf 5)"
   export CYAN="$(tput setaf 6)"
   export WHITE="$(tput setaf 7)"
+
+  export BGBLACK="$(tput setab 0)"
+  export BGRED="$(tput setab 1)"
+  export BGGREEN="$(tput setab 2)"
+  export BGYELLOW="$(tput setab 3)"
+  export BGBLUE="$(tput setab 4)"
+  export BGMAGENTA="$(tput setab 5)"
+  export BGCYAN="$(tput setab 6)"
+  export BGWHITE="$(tput setab 7)"
+
   export BOLD="$(tput bold)"
+  export UNDERLINE="$(tput smul)"
+  
 else
+
   export NORMAL=""
+
+  export BLACK=""
   export RED=""
   export GREEN=""
+  export YELLOW=""
+  export BLUE=""
   export MAGENTA=""
   export CYAN=""
   export WHITE=""
+
+  export BGBLACK=""
+  export BGRED=""
+  export BGGREEN=""
+  export BGYELLOW=""
+  export BGBLUE=""
+  export BGMAGENTA=""
+  export BGCYAN=""
+  export BGWHITE=""
+
   export BOLD=""
+  export UNDERLINE=""
+
 fi
 
 error_exit() {
   echo ''
-  echo "${RED}${BOLD}ERROR${NORMAL}${BOLD}: $1${NORMAL}"
+  echo "${RED}${BOLD}ERROR${NORMAL}: $1"
   shift
   while [ "$#" -gt "0" ]; do
     echo " - $1"
     shift
   done
+  echo ""
   exit 1
 }
 
 log_step() {
   echo ''
-  echo "${GREEN}${BOLD}INFO${NORMAL}${BOLD}: $1${NORMAL}"
+  echo "${GREEN}${BOLD}INFO${NORMAL}: $1"
   shift
   while [ "$#" -gt "0" ]; do
     echo " - $1"
@@ -52,7 +87,7 @@ log_step() {
 
 log_warn() {
   echo ''
-  echo "${CYAN}${BOLD}WARNING${NORMAL}${BOLD}: $1${NORMAL}"
+  echo "${YELLOW}${BOLD}WARNING${NORMAL}: $1"
   shift
   while [ "$#" -gt "0" ]; do
     echo " - $1"
@@ -66,66 +101,95 @@ command_present() {
   type "$1" >/dev/null 2>&1
 }
 
+log_step "Initializing DronaHQ Setup"
+
+DRONAHQ_LICENSE_URL="https://license.dronahq.com"
+
+# validating license key
+echo '';
+read -p "Enter your ${CYAN}DronaHQ LICENSE_KEY${NORMAL} here: " licenseKey
+
+status=`curl --insecure --silent --connect-timeout 8 --output /dev/null $DRONAHQ_LICENSE_URL/validate?key=$licenseKey -I -w "%{http_code}\n"`
+
+if [[ "$status" != "202" ]]; then
+  error_exit "Invalid LICENSE_KEY. Please try again."
+fi
+
 # cleaning directory
-
-log_step "cleaning directory..."
-
 if [ -f ./dronahq.env ]; then
-  log_step 'found a partial install, cleaning it up...'
-  mv dronahq.env dronahq.env.$(date +"%Y-%m-%d_%H-%M-%S")
+  log_step "Found old installation, cleaning it up ..."
+  $MAYBE_SUDO mv dronahq.env dronahq.env.$(date +"%Y-%m-%d_%H-%M-%S")
 fi
 
 if [ -d "storage" ]; then
-  log_step 'cleaning `storage`...'
+  log_step "Cleaning `storage` directory ..."
   $MAYBE_SUDO mv storage storage-$(date +"%Y-%m-%d_%H-%M-%S")
 fi
 
+echo ''
+read -p "Do you want to run your databases on ${CYAN}Docker containers${NORMAL} ? (type 'y' for yes): " containerdbs
+
 # generating environment
-
-log_step "generating environment..."
-
-if [ -f ./dronahq.env ]; then
-  mv dronahq.env dronahq.env.$(date +"%Y-%m-%d_%H-%M-%S")
-fi
+log_step "Generating environment file: ${GREEN}dronahq.env${NORMAL}"
 
 echo "# DronaHQ Environment File" >dronahq.env
 echo "BUILDER_URL=http://localhost" >>dronahq.env
 echo "" >>dronahq.env
-echo "MYSQL_HOST=dronahq-self-hosted-mysqldb" >>dronahq.env
-echo "MYSQL_USER=dronahq" >>dronahq.env
-echo "MYSQL_PASSWORD=" >>dronahq.env
-echo "MYSQL_DATABASE=db5x" >>dronahq.env
-echo "MYSQL_PORT=3306" >>dronahq.env
-echo "" >>dronahq.env
-echo "MONGODB_HOST=dronahq-self-hosted-mongodb" >>dronahq.env
-echo "MONGODB_USER=dronahq" >>dronahq.env
-echo "MONGODB_PASSWORD=" >>dronahq.env
-echo "MONGODB_DATABASE=db5x_studio" >>dronahq.env
-echo "MONGODB_PORT=27017" >>dronahq.env
-echo "" >>dronahq.env
-echo "# Default variables required for Mongo and MySQL container" >>dronahq.env
-echo "MYSQL_ROOT_PASSWORD=" >>dronahq.env
-echo "MYSQL_DATABASE=db5x" >>dronahq.env
-echo "" >>dronahq.env
-echo "MONGO_INITDB_ROOT_USERNAME=root" >>dronahq.env
-echo "MONGO_INITDB_ROOT_PASSWORD=" >>dronahq.env
-echo "MONGO_INITDB_DATABASE=db5x_studio" >>dronahq.env
+
+if [ "$containerdbs" == "y" ]; then
+
+  MYSQL_ROOT_PASSWORD="$(uuidgen | base64 | head -c 32)"
+  MYSQL_PASSWORD="$(uuidgen | base64 | head -c 32)"
+  MONGO_ROOT_PASSWORD="$(uuidgen | base64 | head -c 32)"
+  MONGO_PASSWORD="$(uuidgen | base64 | head -c 32)"
+
+  log_step "Generating random credentials for databases. You can modify variable values as per requirement."
+
+  echo "MYSQL_HOST=dronahq-self-hosted-mysqldb" >>dronahq.env
+  echo "MYSQL_USER=dronahq" >>dronahq.env
+  echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >>dronahq.env
+  echo "" >>dronahq.env
+
+  echo "MONGODB_HOST=dronahq-self-hosted-mongodb" >>dronahq.env
+  echo "MONGODB_USER=dronahq" >>dronahq.env
+  echo "MONGODB_PASSWORD=$MONGO_PASSWORD" >>dronahq.env
+  echo "" >>dronahq.env
+
+  echo "# Default variables required for Mongo and MySQL container" >>dronahq.env
+  echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> dronahq.env
+  echo "MYSQL_DATABASE=db5x" >> dronahq.env
+  echo "" >>dronahq.env
+  echo "MONGO_INITDB_ROOT_USERNAME=root" >> dronahq.env
+  echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_ROOT_PASSWORD" >> dronahq.env
+  echo "MONGO_INITDB_DATABASE=db5x_studio" >> dronahq.env
+  echo "" >>dronahq.env
+
+else
+  log_step "Creating placeholder variables for database containers. Make sure to replace your creadentials once this process is complete."
+
+  echo "MYSQL_HOST=<MYSQL HOST>" >>dronahq.env
+  echo "MYSQL_USER=<MYSQL USER>" >>dronahq.env
+  echo "MYSQL_PASSWORD=<MYSQL PASSWORD>" >>dronahq.env
+  echo "" >>dronahq.env
+
+  echo "MONGODB_HOST=<MONGO HOST>" >>dronahq.env
+  echo "MONGODB_USER=<MONGO USER>" >>dronahq.env
+  echo "MONGODB_PASSWORD=<MONGO PASSWORD>" >>dronahq.env
+  echo "" >>dronahq.env
+fi
+
 echo "" >>dronahq.env
 echo "# Your dronahq license key here" >>dronahq.env
-echo "LICENSE_KEY=" >>dronahq.env
+echo "LICENSE_KEY=$licenseKey" >>dronahq.env
 echo "" >>dronahq.env
-echo "# Add other environment variables" >>dronahq.env
-echo "# Reference: https://docs.dronahq.com/self-hosted-deployment/environment-variables" >>dronahq.env
-echo "#" >>dronahq.env
-echo "" >>dronahq.env
+
+log_step "you can configure extra variables for extended functionality. Refer link: https://docs.dronahq.com/self-hosted-deployment/environment-variables"
 
 log_step "Hurray ! Your setup is done."
 echo ""
-echo "Now you can add your database credentials and DronaHQ License Key in 'dronahq.env' file."
+echo "Run the following command to start DronaHQ."
 echo ""
-echo "Then run following command to start DronaHQ."
+echo "${BGWHITE}${BLACK}${BOLD} sudo docker-compose up -d ${NORMAL}"
 echo ""
-echo "'sudo docker-compose up -d'"
-echo ""
-echo "It can take upto 5 minutes to make your installation ready to use."
+echo "It can take ${YELLOW}upto 5 minutes${NORMAL} to make your installation ready to use."
 echo ""
