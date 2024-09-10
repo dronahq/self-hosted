@@ -174,10 +174,10 @@ echo "# Your dronahq license key here" >>dronahq.env
 echo "LICENSE_KEY=$licenseKey" >>dronahq.env
 echo "" >>dronahq.env
   
- echo "# Add other environment variables" >> dronahq.env
- echo "# Reference: https://docs.dronahq.com/self-hosted-deployment/environment-variables" >> dronahq.env
- echo "# " >> dronahq.env
- echo "" >> dronahq.env
+echo "# Add other environment variables" >> dronahq.env
+echo "# Reference: https://docs.dronahq.com/self-hosted-deployment/environment-variables" >> dronahq.env
+echo "# " >> dronahq.env
+echo "" >> dronahq.env
 
 log_step "you can configure extra variables for extended functionality. Refer link: https://docs.dronahq.com/self-hosted-deployment/environment-variables"
 
