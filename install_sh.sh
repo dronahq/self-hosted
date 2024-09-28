@@ -117,7 +117,7 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
     #   error_exit "Please install git or unzip before continuing"
     # fi
     if command_present apt-get; then
-      MAYBE_SUDO apt-get install unzip
+      $MAYBE_SUDO apt-get install unzip
     fi
   else
     log_step 'downloading...'
