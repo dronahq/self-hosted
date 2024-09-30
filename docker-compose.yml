@@ -1,7 +1,7 @@
 services:
 
   webapp:
-    image: dronahq/self-hosted:2.4.6
+    image: dronahq/self-hosted:3.1.4-stable
     platform: linux/amd64
     container_name: dronahq-self-hosted-webapp
     restart: always
@@ -18,6 +18,7 @@ services:
     container_name: dronahq-self-hosted-mysqldb
     restart: always
     env_file: dronahq.env
+    command: --log-bin-trust-function-creators=1
     volumes:
       - ./init/mysql-init.sql:/docker-entrypoint-initdb.d/schema.sql:ro
       - ./storage/mysql:/var/lib/mysql
