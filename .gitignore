@@ -1,2 +1,3 @@
 storage
 *.env
+.DS_Store

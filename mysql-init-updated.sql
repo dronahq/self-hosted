@@ -4975,7 +4975,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `Dcr`(encString TEXT) RETURNS text CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `Dcr`(encString TEXT) RETURNS text CHARSET utf8mb3
 BEGIN
 
 DECLARE dKey, returnType TEXT;
@@ -5002,7 +5002,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `diy_GetContentTitle`(contId INT) RETURNS text CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `diy_GetContentTitle`(contId INT) RETURNS text CHARSET utf8mb3
 BEGIN
 
 DECLARE contTitle TEXT DEFAULT '';
@@ -5028,7 +5028,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `diy_GetOrCreateDefaultTemplate`(chanId INT) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `diy_GetOrCreateDefaultTemplate`(chanId INT) RETURNS int
 BEGIN
 
 
@@ -5077,7 +5077,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `diy_GetUserName`(urId INT) RETURNS text CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `diy_GetUserName`(urId INT) RETURNS text CHARSET utf8mb3
 BEGIN
 
 DECLARE usrName TEXT DEFAULT '';
@@ -5102,7 +5102,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `diy_GetUserProfileImg`(urId INT) RETURNS text CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `diy_GetUserProfileImg`(urId INT) RETURNS text CHARSET utf8mb3
 BEGIN
 
 DECLARE usrImg TEXT DEFAULT '';
@@ -5127,7 +5127,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `Enc`(someString TEXT) RETURNS text CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `Enc`(someString TEXT) RETURNS text CHARSET utf8mb3
 BEGIN
 
 DECLARE eKey, returnType TEXT;
@@ -5154,7 +5154,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `fn_diy_GetContConsumptionStat_User`(urId INT, chanId INT) RETURNS varchar(50) CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_diy_GetContConsumptionStat_User`(urId INT, chanId INT) RETURNS varchar(50) CHARSET utf8mb3
 BEGIN
 
 DECLARE totalContAvailable, totalContConsumed INT DEFAULT 0;
@@ -5218,7 +5218,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `fn_diy_GetUserActivityStatus`(userId int) RETURNS char(1) CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_diy_GetUserActivityStatus`(userId int) RETURNS char(1) CHARSET utf8mb3
 BEGIN
   
   DECLARE stat CHAR(1) ;
@@ -5254,7 +5254,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `fn_getAppStatus`(activeStatus INT,searchableStatus INT) RETURNS varchar(10) CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getAppStatus`(activeStatus INT,searchableStatus INT) RETURNS varchar(10) CHARSET utf8mb3
 BEGIN
 	DECLARE tas VARCHAR(10) DEFAULT "";
 	IF(activeStatus = 1) THEN
@@ -5283,7 +5283,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `fn_getPluginVersions`(pluginID INT) RETURNS text CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getPluginVersions`(pluginID INT) RETURNS text CHARSET utf8mb3
 BEGIN
 	DECLARE version_details TEXT DEFAULT '';
     select GROUP_CONCAT(baseTable.env_version , '') as version_details FROM (
@@ -5318,7 +5318,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `fn_getUserGroupCount`(chanId INT,filterType TEXT,filterValues TEXT) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_getUserGroupCount`(chanId INT,filterType TEXT,filterValues TEXT) RETURNS int
 BEGIN
 
 DECLARE tCount INT DEFAULT 0;
@@ -5457,7 +5457,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE FUNCTION `getgroupdeleveries`(groupId int) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `getgroupdeleveries`(groupId int) RETURNS int
 BEGIN
 
 declare lastVal, counter, campaignId, campDels, summation int;
@@ -5508,7 +5508,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE FUNCTION `getgroupinteractions`(groupId int) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `getgroupinteractions`(groupId int) RETURNS int
 BEGIN
 
 declare lastVal, counter, campaignId, campInters, summation int;
@@ -5559,7 +5559,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE FUNCTION `getgroupviews`(groupId int) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `getgroupviews`(groupId int) RETURNS int
 BEGIN
 
 declare lastVal, counter, campaignId, campViews, summation int;
@@ -5610,7 +5610,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `GetIndexForCategory`(chanName text) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetIndexForCategory`(chanName text) RETURNS int
 BEGIN
 
 declare returnType, indx1, indx2 int default 1;
@@ -5644,7 +5644,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `GetReleaseNotes`(chanId INT, appVersion TEXT, deviceType TEXT) RETURNS text CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetReleaseNotes`(chanId INT, appVersion TEXT, deviceType TEXT) RETURNS text CHARSET utf8mb3
 BEGIN
 
 DECLARE returnType TEXT DEFAULT '';
@@ -5670,7 +5670,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `plugin_fnGetAppAverageRating`(pluginId INT) RETURNS double
+CREATE DEFINER=`root`@`localhost` FUNCTION `plugin_fnGetAppAverageRating`(pluginId INT) RETURNS double
 BEGIN
 DECLARE retVal DOUBLE;
 
@@ -5698,7 +5698,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `plugin_fnGetAppAverageRatingUserCount`(pluginId INT) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `plugin_fnGetAppAverageRatingUserCount`(pluginId INT) RETURNS int
 BEGIN
 
 DECLARE retVal INT;
@@ -5733,7 +5733,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `plugin_fnGetAppFavCount`(pluginId INT) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `plugin_fnGetAppFavCount`(pluginId INT) RETURNS int
 BEGIN
 
 
@@ -5776,7 +5776,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `plugin_fnGetAppFeedbackCount`(pluginId INT) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `plugin_fnGetAppFeedbackCount`(pluginId INT) RETURNS int
 BEGIN
 
 DECLARE retVal INT;
@@ -5804,7 +5804,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `plugin_fnGetLatestVersionCode`(pluginId INT) RETURNS text CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `plugin_fnGetLatestVersionCode`(pluginId INT) RETURNS text CHARSET utf8mb3
 BEGIN
 
 
@@ -5845,7 +5845,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `plugin_fnGetLatestVersionId`(pluginId INT) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `plugin_fnGetLatestVersionId`(pluginId INT) RETURNS int
 BEGIN
 
 DECLARE retVal INT;
@@ -5882,7 +5882,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `strSplit`(x VARCHAR(5000), delim VARCHAR(100), pos int) RETURNS varchar(1000) CHARSET utf8mb3
+CREATE DEFINER=`root`@`localhost` FUNCTION `strSplit`(x VARCHAR(5000), delim VARCHAR(100), pos int) RETURNS varchar(1000) CHARSET utf8mb3
 return replace(substring(substring_index(x, delim, pos), char_length(substring_index(x, delim, pos - 1)) + 1), delim, '') ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -5899,7 +5899,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE FUNCTION `substrCount`(s VARCHAR(50000), ss VARCHAR(50000)) RETURNS int unsigned
+CREATE DEFINER=`root`@`localhost` FUNCTION `substrCount`(s VARCHAR(50000), ss VARCHAR(50000)) RETURNS int unsigned
     READS SQL DATA
 BEGIN
 DECLARE count int(4) UNSIGNED;
@@ -5936,7 +5936,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `V2_IsUserEmailExists`(userMailId TEXT) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `V2_IsUserEmailExists`(userMailId TEXT) RETURNS int
 BEGIN
 
 IF EXISTS (SELECT userid FROM userinfo WHERE uemail = userMailId AND is_verified = 1) THEN
@@ -5961,7 +5961,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE FUNCTION `v7_fnGetAppCount`(chanId INT ,catId INT) RETURNS int
+CREATE DEFINER=`root`@`localhost` FUNCTION `v7_fnGetAppCount`(chanId INT ,catId INT) RETURNS int
 BEGIN
 	DECLARE cmsAppCount INT DEFAULT 0;
 	DECLARE normalAppCount INT DEFAULT 0;
@@ -6001,7 +6001,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `addModifyInstalledCategoryMeta`(IN categoryId INT, IN channelId INT, IN catName TEXT,IN catDesc TEXT, IN catIcon TEXT, IN schemeType TEXT, IN updatedBy TEXT, IN catType TEXT, IN formatId TEXT, IN isInstalled INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addModifyInstalledCategoryMeta`(IN categoryId INT, IN channelId INT, IN catName TEXT,IN catDesc TEXT, IN catIcon TEXT, IN schemeType TEXT, IN updatedBy TEXT, IN catType TEXT, IN formatId TEXT, IN isInstalled INT)
 BEGIN
 	DECLARE resp INT DEFAULT 0;
 	IF categoryId = 0 THEN
@@ -6035,7 +6035,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `checkonprimeLicenseLock`(IN useremail TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `checkonprimeLicenseLock`(IN useremail TEXT)
 BEGIN
 	select kcol_operation as licenselock from userinfo ui 
 	join userdetails ud on ud.userid = ui.userid
@@ -6057,7 +6057,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `deleteConnectorMetaInfo`(IN channelid INT, IN catid INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteConnectorMetaInfo`(IN channelid INT, IN catid INT)
 BEGIN
 
 	IF EXISTS (SELECT 1 FROM api_category WHERE channel_id = channelid AND api_category_id = catid) THEN
@@ -6092,7 +6092,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_AssignGroupToUser`(IN urId INT, IN grpId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_AssignGroupToUser`(IN urId INT, IN grpId INT)
 BEGIN
 
   DECLARE urChanId, grpChanId INT DEFAULT 0;
@@ -6121,7 +6121,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_ChangeUserPassword`(IN urId INT, IN hash_code TEXT, IN salt_code TEXT, IN u_iterations TEXT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_ChangeUserPassword`(IN urId INT, IN hash_code TEXT, IN salt_code TEXT, IN u_iterations TEXT, IN chanId INT)
 BEGIN
 
 DECLARE respType, usrId INT DEFAULT 0;
@@ -6156,7 +6156,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CheckAppLogin`(IN emailId TEXT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CheckAppLogin`(IN emailId TEXT, IN chanName TEXT)
 BEGIN
 
 DECLARE chanId, respType, userIteration INT DEFAULT 0;
@@ -6203,7 +6203,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CheckConsoleLogin`(IN userEmail TEXT)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_CheckConsoleLogin`(IN userEmail TEXT)
 BEGIN
   DECLARE respType, usrId, userIter, userAdmin, adminId, rlId, urId, urChanId INT DEFAULT 0;
   DECLARE userName, userHash, userSalt, urChanName,urImageUrl TEXT DEFAULT '';
@@ -6248,7 +6248,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CheckIfUserLocked`(IN userId INT,IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CheckIfUserLocked`(IN userId INT,IN chanId INT)
 BEGIN
 
 SELECT 
@@ -6276,7 +6276,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CheckPassword`(in urId int, in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CheckPassword`(in urId int, in chanId int)
 BEGIN
 DECLARE thashcode,tsaltcode,titerations TEXT DEFAULT '';
 DECLARE usrId INT;
@@ -6309,7 +6309,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CheckUservarificationForchannel`(in usercode text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CheckUservarificationForchannel`(in usercode text)
 BEGIN
 
 IF EXISTS(SELECT * FROM admininvites where verificationCode=usercode ) THEN
@@ -6336,7 +6336,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `DIY_chkTokenExist`(IN newTok TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DIY_chkTokenExist`(IN newTok TEXT)
 BEGIN
 
 
@@ -6377,7 +6377,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CreateActionButton`(IN actButTitle VARCHAR(45), IN actButAction VARCHAR(45), IN actButUrl VARCHAR(200), IN chanName TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CreateActionButton`(IN actButTitle VARCHAR(45), IN actButAction VARCHAR(45), IN actButUrl VARCHAR(200), IN chanName TEXT,
 
 IN gridxhdpi VARCHAR(200), IN gridhdpi VARCHAR(200), IN gridmdpi VARCHAR(200), IN gridldpi VARCHAR(200),
 
@@ -6446,7 +6446,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_createAdminViewRole`(in adminId int,in accessText text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_createAdminViewRole`(in adminId int,in accessText text)
 BEGIN
 if not exists(select * from admin_view_role_access_map where uid=adminId) then
 	insert into admin_view_role_access_map(uid, map_id)Values(adminId,accessText);
@@ -6469,7 +6469,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CreateCategoryInFolder_v2`(in categoryId int,in fId int,in stype text)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_CreateCategoryInFolder_v2`(in categoryId int,in fId int,in stype text)
 BEGIN
 
 declare indx int default 1;
@@ -6525,7 +6525,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CreateCategoryTemplate`(IN templateName TEXT, IN isMasterTemplate BOOL, IN groupCollection TEXT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CreateCategoryTemplate`(IN templateName TEXT, IN isMasterTemplate BOOL, IN groupCollection TEXT, IN chanId INT)
 BEGIN
 
 DECLARE lastVal, counter, groupId, templateId INT DEFAULT 0;
@@ -6579,7 +6579,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_createEmailconfig_v1`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_createEmailconfig_v1`(
 in fromname text,
 in fromemail text,
 in hostname text,
@@ -6627,7 +6627,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CreateGroup`(IN groupName TEXT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CreateGroup`(IN groupName TEXT, IN chanName TEXT)
 BEGIN
 DECLARE chanId, groupId, returnType INT;
 
@@ -6666,7 +6666,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CreateUserBypass`(IN userName TEXT, IN userEmail TEXT, IN hashCode TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CreateUserBypass`(IN userName TEXT, IN userEmail TEXT, IN hashCode TEXT,
 
   IN saltCode TEXT, IN iterations TEXT, IN chanName TEXT, IN isAdmin BOOL, IN isValidId BOOL, IN eCode VARCHAR(50))
 BEGIN
@@ -6741,7 +6741,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CreateUserFromWebsite_v2`(in userName text, in userDesig text, in email text, in hashCode text, in saltCode text, in iterations text, in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CreateUserFromWebsite_v2`(in userName text, in userDesig text, in email text, in hashCode text, in saltCode text, in iterations text, in chanName text)
 BEGIN
 	declare chanId, returnType, usrId, groupId, urId, rlId int default 0;
 	declare verifyCode text default UUID();
@@ -6793,7 +6793,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CreateUserInpoxforNotification`(in urId int,in notiId int,in chanId int,in mType text,in pushDateTime DATETIME)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CreateUserInpoxforNotification`(in urId int,in notiId int,in chanId int,in mType text,in pushDateTime DATETIME)
 BEGIN
 
 if not exists(select * from userinbox where uid=urId and noti_id=notiId and channelid=chanId and createddate=pushDateTime) then
@@ -6820,7 +6820,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_CreateUserViaExternalAuth`(IN userName TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_CreateUserViaExternalAuth`(IN userName TEXT,
 
         IN userEmail TEXT, IN chanName TEXT, IN regVia VARCHAR(10),
 
@@ -6983,7 +6983,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_Create_subdomain`( in sname text,in isbrand int,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_Create_subdomain`( in sname text,in isbrand int,
 in stitle text,in sdescrtion text, in sfevicon text, in sbackcolor text,in chanId int)
 BEGIN
 declare respstatus int default 0;
@@ -7031,7 +7031,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_DeleteEmailConfig`(in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_DeleteEmailConfig`(in chanId int)
 BEGIN
   Delete from channel_email_config where channel_id=chanId;
 END ;;
@@ -7050,7 +7050,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_DeleteGroup`(IN chanId INT, IN grpId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_DeleteGroup`(IN chanId INT, IN grpId INT)
 BEGIN
 
 
@@ -7075,7 +7075,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_DeletePendingNotificationForUser`(IN urId INT, IN chanId INT, IN lastFetchOn DATETIME)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_DeletePendingNotificationForUser`(IN urId INT, IN chanId INT, IN lastFetchOn DATETIME)
 BEGIN
 
 DELETE FROM userpendingnotification WHERE uid = urId AND channelid = chanId AND noti_create_date < lastFetchOn;
@@ -7096,7 +7096,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_delete_meta_info_sso`(in chanId int,in dName text,in providerId text)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_delete_meta_info_sso`(in chanId int,in dName text,in providerId text)
 BEGIN
 	DECLARE respStatus INT DEFAULT 0;
 	SET respStatus=0;
@@ -7121,7 +7121,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_delete_OauthSsoConfig`(in chanId int,in ssoId int,in domainName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_delete_OauthSsoConfig`(in chanId int,in ssoId int,in domainName text)
 BEGIN
  IF EXISTS(select * from channel_oauth_sso_config where oauth_id=ssoId and channel_id=chanId and oauth_restricted_domain= domainName)THEN
 	DELETE FROM channel_oauth_sso_config  where oauth_id=ssoId and channel_id=chanId and oauth_restricted_domain= domainName;
@@ -7144,7 +7144,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_delete_samlSsoConfig`(in chanId int,in ssoId int,in domainName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_delete_samlSsoConfig`(in chanId int,in ssoId int,in domainName text)
 BEGIN
  IF EXISTS(select * from sso_auth_config where id=ssoId and channel_id=chanId and domain_url= domainName)THEN
 	DELETE FROM sso_auth_config  where id=ssoId and channel_id=chanId and domain_url= domainName;
@@ -7167,7 +7167,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_EditCategoryTemplate`(in templateId int, 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_EditCategoryTemplate`(in templateId int, 
   in groupCollection text, in templateName text, IN chanId INT)
 BEGIN
 
@@ -7217,7 +7217,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_EditGroup_v2`(in grpId int, in grpName text,in templateCollection text, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_EditGroup_v2`(in grpId int, in grpName text,in templateCollection text, IN chanId INT)
 BEGIN
 
 
@@ -7298,7 +7298,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetAdmin`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetAdmin`(IN urId INT, IN chanId INT)
 BEGIN
 
 
@@ -7343,7 +7343,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetAdminDetailAfterLogin`(IN urId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetAdminDetailAfterLogin`(IN urId INT)
 BEGIN
 
 DECLARE returnType INT DEFAULT 0;
@@ -7391,7 +7391,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetAllGroups`(IN chanId INT, IN filterType TEXT, IN filterValues TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetAllGroups`(IN chanId INT, IN filterType TEXT, IN filterValues TEXT)
 BEGIN
 
 DECLARE groupCount INT DEFAULT 0;
@@ -7486,7 +7486,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_getAppDevicesOfUser`(IN urId INT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_getAppDevicesOfUser`(IN urId INT, IN chanName TEXT)
 BEGIN
 
 DECLARE chanId INT;
@@ -7532,7 +7532,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetAppMetaAPIJSON`(IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetAppMetaAPIJSON`(IN chanId INT)
 BEGIN
 
 IF EXISTS (SELECT * FROM channel WHERE channelid = chanId) THEN
@@ -7557,7 +7557,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetCategoryFolderApiList_V2`(IN folderId Int, IN chanId INT,IN urId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetCategoryFolderApiList_V2`(IN folderId Int, IN chanId INT,IN urId INT)
 BEGIN
 DROP TEMPORARY TABLE IF EXISTS temp_fcatList;
 CREATE TEMPORARY TABLE temp_fcatList
@@ -7724,7 +7724,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_getChanLicenseInfo`(in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_getChanLicenseInfo`(in chanId int)
 BEGIN
 select channelid, dcr(noitarud) as duration, dcr(tratsfoetad) as dateofstart, 
  dcr(yeklac) as calkey, dcr(yekdis) as sidkey,
@@ -7746,7 +7746,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetChannelDetails`(in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetChannelDetails`(in chanName text)
 BEGIN
 
 
@@ -7795,7 +7795,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetChannelDetailsFromId`(in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetChannelDetailsFromId`(in chanId int)
 BEGIN
 
 
@@ -7826,7 +7826,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `DIY_getChannelGlobalToken`(IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DIY_getChannelGlobalToken`(IN chanId INT)
 BEGIN
 
 SELECT c.channelid, p.tokenkey, p.token_id, p.token_type, p.plugin_id
@@ -7855,7 +7855,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetChannelIdPForDomain`(IN domainName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetChannelIdPForDomain`(IN domainName TEXT)
 BEGIN
     IF EXISTS (SELECT * FROM channel_external_idp WHERE domain_name = domainName) THEN
         SELECT 
@@ -7887,7 +7887,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetChannelIdPForUser`(IN chanName TEXT, IN urId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetChannelIdPForUser`(IN chanName TEXT, IN urId INT)
 BEGIN
 
   DECLARE chanId, isExtAuth INT;
@@ -7948,7 +7948,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetChannelIdPForUser_v2`(IN chanName TEXT, IN urId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_GetChannelIdPForUser_v2`(IN chanName TEXT, IN urId INT)
 BEGIN
 
   DECLARE chanId, isExtAuth INT;
@@ -8015,7 +8015,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetChannelIdPForUser_v3`(IN chanName TEXT, IN urId INT,in domain Text)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_GetChannelIdPForUser_v3`(IN chanName TEXT, IN urId INT,in domain Text)
 BEGIN
 
 DECLARE chanId, isExtAuth INT;
@@ -8079,7 +8079,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_getChannelProgress`(IN chan_name TEXT,IN userId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_getChannelProgress`(IN chan_name TEXT,IN userId INT)
 BEGIN
 
 	DECLARE chanId, userCount INT;
@@ -8144,7 +8144,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `DIY_GetChannelSecuritySetting`(IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DIY_GetChannelSecuritySetting`(IN chanId INT)
 BEGIN
 
 IF EXISTS(SELECT * FROM channel WHERE channelid = chanId) THEN
@@ -8188,7 +8188,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetChannelSetting`(IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetChannelSetting`(IN chanId INT)
 BEGIN
 
   SELECT device_limit,
@@ -8221,7 +8221,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetConsumeapps`(in chanId Int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetConsumeapps`(in chanId Int)
 BEGIN
 select count(*)as totalConsume from plugin_app where plugin_type='ZP' and channelid=chanId and is_active=1 and is_draft=0;
 END ;;
@@ -8240,7 +8240,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetContentForUser`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetContentForUser`(IN urId INT, IN chanId INT)
 BEGIN
 
 DECLARE nowDate DATETIME;
@@ -8293,7 +8293,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetContentInboxV3`(in userid int,in chanId int,IN max_id INT, IN conLimit INT,IN search_text TEXT,IN filter_type TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetContentInboxV3`(in userid int,in chanId int,IN max_id INT, IN conLimit INT,IN search_text TEXT,IN filter_type TEXT)
 BEGIN
 
 SELECT 
@@ -8339,7 +8339,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetDefaultAppID`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetDefaultAppID`()
 BEGIN
 
 SELECT appid FROM applinks where isdefault=1;
@@ -8360,7 +8360,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_getEmailConfig`(in chanId int ,in contype text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_getEmailConfig`(in chanId int ,in contype text)
 BEGIN
       select * from channel_email_config where channel_id=chanId and config_type= contype;
 END ;;
@@ -8379,7 +8379,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetEmailTemplate`(IN chanName TEXT, IN mailContext TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetEmailTemplate`(IN chanName TEXT, IN mailContext TEXT)
 BEGIN
 
 
@@ -8426,7 +8426,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetFormBuilder`(in frmId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetFormBuilder`(in frmId int)
 BEGIN
 
 select * from formbuilder where formid = frmId AND is_deleted = 0;
@@ -8447,7 +8447,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetGroup`(IN groupId INT, IN chanId INT, IN pluginId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetGroup`(IN groupId INT, IN chanId INT, IN pluginId INT)
 BEGIN
 
 IF(pluginId = 0)THEN
@@ -8492,7 +8492,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetGroupIdFromName`(IN groupName TEXT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetGroupIdFromName`(IN groupName TEXT, IN chanId INT)
 BEGIN
 
 
@@ -8523,7 +8523,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetGroupsOfTemplate`(IN urId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetGroupsOfTemplate`(IN urId INT)
 BEGIN
 
 DECLARE usrId, adminId INT;
@@ -8572,7 +8572,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetHomescreenIcon_ForUser`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetHomescreenIcon_ForUser`(IN urId INT, IN chanId INT)
 BEGIN
 
 DECLARE defaultTemplate INT;
@@ -8701,7 +8701,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetHomescreenIcon_ForUserV3`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_GetHomescreenIcon_ForUserV3`(IN urId INT, IN chanId INT)
 BEGIN
     DECLARE  defaultTemplate INT;
 
@@ -8857,7 +8857,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_getIconFeedBack`(IN iconId INT, IN iconType VARCHAR(5), IN chanId INT, IN maxFeedId INT, IN maxResultCount INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_getIconFeedBack`(IN iconId INT, IN iconType VARCHAR(5), IN chanId INT, IN maxFeedId INT, IN maxResultCount INT)
 BEGIN
 DECLARE pluginId, iconExists INT DEFAULT 0;
 
@@ -8921,7 +8921,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_getInternalViewPlugin`(IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_getInternalViewPlugin`(IN chanId INT)
 BEGIN
 
 
@@ -8954,7 +8954,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetNotificationForUser`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetNotificationForUser`(IN urId INT, IN chanId INT)
 BEGIN
 
 SELECT upc.*, NOW() AS notiLastDate FROM userpendingnotification upc WHERE uid = urId AND channelid = chanId;
@@ -8975,7 +8975,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_getOauthCreds`(in providerCode Text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_getOauthCreds`(in providerCode Text)
 BEGIN
 select * from channel_oauth_sso_config where oauth_provider_id=providerCode and oauth_status=1;
 END ;;
@@ -8994,7 +8994,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetOrCreateDefaultCatTemplate`(IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetOrCreateDefaultCatTemplate`(IN chanId INT)
 BEGIN
 
 DECLARE returnType INT;
@@ -9030,7 +9030,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetResetPasswordDetail`(IN requestCode TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetResetPasswordDetail`(IN requestCode TEXT)
 BEGIN
 
 DECLARE userEmail TEXT DEFAULT '';
@@ -9062,7 +9062,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `DIY_GetRootedAllowedStatusInChannel`(IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DIY_GetRootedAllowedStatusInChannel`(IN chanId INT)
 BEGIN
 
 IF EXISTS(SELECT * FROM channel WHERE channelid = chanId)THEN
@@ -9095,7 +9095,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_getSubDomainDetails_new`(in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_getSubDomainDetails_new`(in chanId int)
 BEGIN
 declare is_status int;
 
@@ -9127,7 +9127,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserByEmail`(IN userEmail VARCHAR(250), IN chanId INT, IN showDeactive BOOL)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserByEmail`(IN userEmail VARCHAR(250), IN chanId INT, IN showDeactive BOOL)
 BEGIN
 
   DECLARE usrId, urId INT;
@@ -9156,7 +9156,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserByEmail_Plugin`(IN userEmail VARCHAR(250), IN pluginId INT, IN chanId INT, IN showDeactive BOOL)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserByEmail_Plugin`(IN userEmail VARCHAR(250), IN pluginId INT, IN chanId INT, IN showDeactive BOOL)
 BEGIN
 
   
@@ -9241,7 +9241,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserById`(IN urId INT, IN chanId INT, IN showDeactive BOOL)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserById`(IN urId INT, IN chanId INT, IN showDeactive BOOL)
 BEGIN
 
   SELECT 
@@ -9283,7 +9283,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserById_Plugin`(IN urId INT, IN pluginId INT, IN chanId INT, IN showDeactive BOOL)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserById_Plugin`(IN urId INT, IN pluginId INT, IN chanId INT, IN showDeactive BOOL)
 BEGIN
 
 
@@ -9356,7 +9356,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserExternalAuth`(IN urId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserExternalAuth`(IN urId INT)
 BEGIN
 
   DECLARE usrId INT;
@@ -9387,7 +9387,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserGroup`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserGroup`(IN urId INT, IN chanId INT)
 BEGIN
 
 
@@ -9422,7 +9422,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserInfoDetails`(in userid int,in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserInfoDetails`(in userid int,in chanId int)
 BEGIN
 SELECT 
     userdetails.uid,
@@ -9469,7 +9469,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserNotificationList`(in urId int, in notiId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserNotificationList`(in urId int, in notiId int)
 BEGIN
 
 	SELECT
@@ -9506,7 +9506,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserRecommList`(in usrId int, in contentId int )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserRecommList`(in usrId int, in contentId int )
 BEGIN
 
 SELECT
@@ -9539,7 +9539,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUsers`(IN chanId INT, IN maxId INT, IN resultSize INT, IN groupIds VARCHAR(150), IN searchText VARCHAR(45), IN showDeactive BOOL, 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUsers`(IN chanId INT, IN maxId INT, IN resultSize INT, IN groupIds VARCHAR(150), IN searchText VARCHAR(45), IN showDeactive BOOL, 
     IN listType INT(1), IN showStats BOOL)
 BEGIN
 
@@ -9598,7 +9598,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUserStat`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUserStat`(IN urId INT, IN chanId INT)
 BEGIN
 
 -- Status: Inactive, Moderate, Active
@@ -9671,7 +9671,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_GetUsers_Plugin`(IN pluginId INT, IN chanId INT, IN maxId INT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_GetUsers_Plugin`(IN pluginId INT, IN chanId INT, IN maxId INT,
 
   IN resultSize INT, IN groupId INT, IN searchText VARCHAR(45), IN showDeactive BOOL, IN showStats BOOL, IN listType INT)
 BEGIN
@@ -9770,7 +9770,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_InsertAppLink`(IN appLinkid INT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_InsertAppLink`(IN appLinkid INT, IN chanName TEXT)
 BEGIN
 
 
@@ -9809,7 +9809,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_InsertAppUpgradeData`(IN urId INT, IN deviceId TEXT, IN deviceType TEXT, IN appName TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_InsertAppUpgradeData`(IN urId INT, IN deviceId TEXT, IN deviceType TEXT, IN appName TEXT,
 
   IN appVersion TEXT, IN chanId INT)
 BEGIN
@@ -9886,7 +9886,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_InsertDeviceHealth`(IN urId INT, IN devId TEXT, IN devName TEXT, IN devType TEXT, IN appName TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_InsertDeviceHealth`(IN urId INT, IN devId TEXT, IN devName TEXT, IN devType TEXT, IN appName TEXT,
 
   IN osVer TEXT, IN deviceModel TEXT, IN freeMem TEXT, IN memUsedByApp TEXT, IN chanId INT, IN isRooted BOOL)
 BEGIN
@@ -9967,7 +9967,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_insert_meta_info_sso`(in chanId int,in proType text,in ssoUrl text,
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_insert_meta_info_sso`(in chanId int,in proType text,in ssoUrl text,
 in ssoCallback text,in idpCode text, in accessType text,in domainName text,in jitaccess int)
 BEGIN
 
@@ -9998,7 +9998,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_InviteUserSSO`(IN userName TEXT, IN userEmail TEXT, 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_InviteUserSSO`(IN userName TEXT, IN userEmail TEXT, 
     IN userVerifyCode TEXT, IN chanId INT)
 BEGIN
 
@@ -10038,7 +10038,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_InviteUserToForExcel`(IN userName TEXT, IN userEmail TEXT, IN userVerifyCode TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_InviteUserToForExcel`(IN userName TEXT, IN userEmail TEXT, IN userVerifyCode TEXT,
 IN grpId INT, IN chanName TEXT, IN eCode VARCHAR(50))
 BEGIN
 DECLARE respType, chanId, urId, usrId INT DEFAULT 0;
@@ -10103,7 +10103,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_InviteUserToForExcel_sso`(IN userName TEXT, IN userEmail TEXT, IN userVerifyCode TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_InviteUserToForExcel_sso`(IN userName TEXT, IN userEmail TEXT, IN userVerifyCode TEXT,
 IN grpId INT, IN chanName TEXT, IN eCode VARCHAR(50))
 BEGIN
 DECLARE respType, chanId, urId, usrId INT DEFAULT 0;
@@ -10168,7 +10168,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_InviteUserToTeamInMultiplegrp`(IN userName TEXT, IN userEmail TEXT, IN userVerifyCode TEXT, IN devId TEXT, IN grpId TEXT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_InviteUserToTeamInMultiplegrp`(IN userName TEXT, IN userEmail TEXT, IN userVerifyCode TEXT, IN devId TEXT, IN grpId TEXT, IN chanName TEXT)
 BEGIN
 DECLARE respType, chanId, urId, usrId INT DEFAULT 0;
 DECLARE currentTime DATETIME DEFAULT NOW();
@@ -10279,7 +10279,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_IsUserForUpgrade`(IN urId INT, IN appName TEXT, IN deviceType TEXT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_IsUserForUpgrade`(IN urId INT, IN appName TEXT, IN deviceType TEXT, IN chanId INT)
 BEGIN
 
 DECLARE returnType INT DEFAULT 0;
@@ -10315,7 +10315,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_KBTimeSpent`(IN urId INT, IN iconId INT, IN chanId INT, IN acsTime INT, IN iconType CHAR(4),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_KBTimeSpent`(IN urId INT, IN iconId INT, IN chanId INT, IN acsTime INT, IN iconType CHAR(4),
     IN pluginVer VARCHAR(45))
 BEGIN
 
@@ -10365,7 +10365,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_LogoutFromDevice`(IN urId INT, IN chanId INT, IN devId VARCHAR(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_LogoutFromDevice`(IN urId INT, IN chanId INT, IN devId VARCHAR(100))
 BEGIN
   DECLARE usrId INT DEFAULT 0;
   DECLARE devType TEXT;
@@ -10413,7 +10413,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_MakeAdmin`(IN urId INT, IN chanId INT, IN isSuper BOOL, IN templateIdBunch TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_MakeAdmin`(IN urId INT, IN chanId INT, IN isSuper BOOL, IN templateIdBunch TEXT)
 BEGIN
 
 
@@ -10554,7 +10554,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_MakeAdminUser`(IN urId INT, IN rolId INT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_MakeAdminUser`(IN urId INT, IN rolId INT, IN chanName TEXT)
 BEGIN
 
 DECLARE chanId, usrId INT DEFAULT 0;
@@ -10587,7 +10587,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_MakeAdminUserV2`(IN urId INT, IN rolId INT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_MakeAdminUserV2`(IN urId INT, IN rolId INT, IN chanName TEXT)
 BEGIN
 
 DECLARE chanId, usrId INT DEFAULT 0;
@@ -10628,7 +10628,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_MakeCreatorUser`(IN urId INT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_MakeCreatorUser`(IN urId INT, IN chanName TEXT)
 BEGIN
 DECLARE chanId, usrId,rolId INT DEFAULT 0;
 START TRANSACTION;
@@ -10666,7 +10666,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_MakeUserAsEndUser`(IN urId INT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_MakeUserAsEndUser`(IN urId INT, IN chanName TEXT)
 BEGIN
 DECLARE chanId, usrId INT DEFAULT 0;
 START TRANSACTION;
@@ -10697,7 +10697,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RecordActivity`(IN chanId INT, IN subjectId INT, IN objectId INT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_RecordActivity`(IN chanId INT, IN subjectId INT, IN objectId INT,
 
     IN objType CHAR(5), IN actVerb VARCHAR(20))
 BEGIN
@@ -10728,7 +10728,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RecordActivity_V2`(IN chanId INT, IN subjectId INT, IN subjectType CHAR(5),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_RecordActivity_V2`(IN chanId INT, IN subjectId INT, IN subjectType CHAR(5),
 
   IN objectId INT, IN objType CHAR(5), IN actVerb VARCHAR(20), IN actData VARCHAR(150))
 BEGIN
@@ -10759,7 +10759,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RegisterAndroidPushToken`(IN urId INT, IN devId VARCHAR(100), IN pushToken TEXT, IN pushType CHAR(4))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_RegisterAndroidPushToken`(IN urId INT, IN devId VARCHAR(100), IN pushToken TEXT, IN pushType CHAR(4))
 BEGIN
 
   IF EXISTS (SELECT * FROM androidpushtokens WHERE uid = urId AND deviceid = devId) THEN
@@ -10785,7 +10785,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RegisterIOSPushToken`(IN urId INT, IN devId TEXT, IN devToken TEXT, IN apName TEXT, IN pshSound TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_RegisterIOSPushToken`(IN urId INT, IN devId TEXT, IN devToken TEXT, IN apName TEXT, IN pshSound TEXT)
 BEGIN
 
   DECLARE devType TEXT;
@@ -10829,7 +10829,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RemoveAdminRights`(in userIdBunch text,in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_RemoveAdminRights`(in userIdBunch text,in chanName text)
 BEGIN
 
 declare chanId, urId,usrId int;
@@ -10890,7 +10890,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RemoveAdminViewRole`(in adminId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_RemoveAdminViewRole`(in adminId int)
 BEGIN
 if exists(select * from admin_view_role_access_map where uid=adminId) then
 	Delete from admin_view_role_access_map where  uid=adminId;
@@ -10911,7 +10911,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RemoveCategoryFromFolder`(in categoryId int,in fId int,in stype text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_RemoveCategoryFromFolder`(in categoryId int,in fId int,in stype text)
 BEGIN
 DECLARE templateId INT DEFAULT 0;
 Declare atype varchar(10) DEFAULT '';
@@ -10938,7 +10938,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RemoveCategoryFromFolder_v2`(in categoryId int,in fId int,in stype text)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_RemoveCategoryFromFolder_v2`(in categoryId int,in fId int,in stype text)
 BEGIN
 DECLARE templateId INT DEFAULT 0;
 Declare atype varchar(10) DEFAULT '';
@@ -10979,7 +10979,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_removeTokensAppDevicesOfUser`(IN appId INT, IN deviceId TEXT, IN chanName TEXT, IN userId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_removeTokensAppDevicesOfUser`(IN appId INT, IN deviceId TEXT, IN chanName TEXT, IN userId INT)
 BEGIN
 
 DECLARE chanId INT;
@@ -11020,7 +11020,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_RemoveUserFromGroup`(IN urId INT, IN grpId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_RemoveUserFromGroup`(IN urId INT, IN grpId INT)
 BEGIN
 
   IF EXISTS (SELECT * FROM uidgid WHERE uid = urId AND gid = grpId) THEN
@@ -11045,7 +11045,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_ResetUserPassword`(IN emailId TEXT, IN hash_code TEXT, IN salt_code TEXT, IN u_iterations TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_ResetUserPassword`(IN emailId TEXT, IN hash_code TEXT, IN salt_code TEXT, IN u_iterations TEXT)
 BEGIN
 
 DECLARE usrId INT;
@@ -11079,7 +11079,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_saveEmbedSettingmap`(in favicon text,in mtitle text, in mdesc text,in mshortdecs text,in pluginId int,in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_saveEmbedSettingmap`(in favicon text,in mtitle text, in mdesc text,in mshortdecs text,in pluginId int,in chanId int)
 BEGIN
 --  emdfavicom
   update formbuilder_embed 
@@ -11106,7 +11106,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_savefrandlyname`(in fnName text,in pluginId int,in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_savefrandlyname`(in fnName text,in pluginId int,in chanId int)
 BEGIN
 declare respcode int default 0;
 
@@ -11138,7 +11138,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_SetAppMetaJSON`(IN appMetaJson TEXT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_SetAppMetaJSON`(IN appMetaJson TEXT, IN chanName TEXT)
 BEGIN
 
 DECLARE chanId INT DEFAULT 0;
@@ -11167,7 +11167,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_setdevloperPlan`( in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_setdevloperPlan`( in chanId int)
 BEGIN
 declare respstatus int;
 set respstatus=0;
@@ -11192,7 +11192,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_setIconUserFeedback`(IN feedbackId INT, IN feedbackText VARCHAR(1000), IN pluginVersion TEXT, IN urId INT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_setIconUserFeedback`(IN feedbackId INT, IN feedbackText VARCHAR(1000), IN pluginVersion TEXT, IN urId INT,
 
   IN chanId INT, IN iconId INT, IN iconType VARCHAR(9), IN deviceType VARCHAR(45))
 BEGIN
@@ -11309,7 +11309,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_setIconUserRating`(IN urId INT, IN chanId INT, IN iconId INT, IN iconType VARCHAR(9), IN appRating INT, IN deviceType VARCHAR(45), IN pluginVerCode TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_setIconUserRating`(IN urId INT, IN chanId INT, IN iconId INT, IN iconType VARCHAR(9), IN appRating INT, IN deviceType VARCHAR(45), IN pluginVerCode TEXT)
 BEGIN
 
 
@@ -11422,7 +11422,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_setInternalViewPlugin`(IN pluginId INT, IN chanId INT, IN viewCode VARCHAR(20))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_setInternalViewPlugin`(IN pluginId INT, IN chanId INT, IN viewCode VARCHAR(20))
 BEGIN
 
 DECLARE isSuccess INT DEFAULT 0;
@@ -11498,7 +11498,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_SetLoginData`(IN emailId TEXT, IN chanName TEXT, IN devId TEXT, IN devName TEXT, IN devType TEXT, IN appNm TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_SetLoginData`(IN emailId TEXT, IN chanName TEXT, IN devId TEXT, IN devName TEXT, IN devType TEXT, IN appNm TEXT,
 									 IN currCity TEXT, IN currCountry TEXT, IN isRooted BOOL)
 BEGIN
 
@@ -11639,7 +11639,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_SetUserAppLaunchDate`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_SetUserAppLaunchDate`(IN urId INT, IN chanId INT)
 BEGIN
 
 IF EXISTS (SELECT * FROM userdetails WHERE uid = urId AND channelid = chanId AND is_active = 1) THEN
@@ -11663,7 +11663,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_StoreAdminLoginToken`(IN adminId INT, IN oldCookieHash TEXT, IN cookieHash TEXT, IN cookieSalt TEXT, IN cookieCreateDt DATETIME, IN cookieExpireIn INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_StoreAdminLoginToken`(IN adminId INT, IN oldCookieHash TEXT, IN cookieHash TEXT, IN cookieSalt TEXT, IN cookieCreateDt DATETIME, IN cookieExpireIn INT)
 BEGIN
 
 IF (oldCookieHash <> '') THEN
@@ -11693,7 +11693,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_StoreAuthProviderToken_Temp`(IN providerToken TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_StoreAuthProviderToken_Temp`(IN providerToken TEXT)
 BEGIN
 
  declare restype int;
@@ -11725,7 +11725,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_textaccessed`(in urId int,in contentId int,in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_textaccessed`(in urId int,in contentId int,in chanId int)
 BEGIN
 
 declare currentDateTime datetime default now();
@@ -11784,7 +11784,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_TimeSpentOnKnowledgeFeed`(in urId int, in time_spent int,in chanId text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_TimeSpentOnKnowledgeFeed`(in urId int, in time_spent int,in chanId text)
 BEGIN
 
 declare resultType int default 0;
@@ -11812,7 +11812,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_TrackUsageOnApp`(IN urId INT, IN timeSpnt BIGINT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_TrackUsageOnApp`(IN urId INT, IN timeSpnt BIGINT, IN chanId INT)
 BEGIN
 
 IF EXISTS (SELECT uid FROM userdetails WHERE uid = urId AND channelid = chanId) THEN
@@ -11859,7 +11859,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_TrfCategoryToTemplate`(IN categoryId INT, IN templateId INT, IN categoryOrActionButton VARCHAR(10), IN displayName VARCHAR(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_TrfCategoryToTemplate`(IN categoryId INT, IN templateId INT, IN categoryOrActionButton VARCHAR(10), IN displayName VARCHAR(100))
 BEGIN
 
 
@@ -11910,7 +11910,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpdateAppBannerUrl`(IN chanId INT, IN bannerUrl VARCHAR(255))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpdateAppBannerUrl`(IN chanId INT, IN bannerUrl VARCHAR(255))
 BEGIN
 
 
@@ -11937,7 +11937,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpdateAppModule`(IN chanId INT, IN allowSocial BOOLEAN,IN allowProfile BOOLEAN,IN allowDownload BOOLEAN)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpdateAppModule`(IN chanId INT, IN allowSocial BOOLEAN,IN allowProfile BOOLEAN,IN allowDownload BOOLEAN)
 BEGIN
 
 IF NOT EXISTS(SELECT * FROM channel_app_module WHERE channelid = chanId) THEN
@@ -11970,7 +11970,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpdateChannelDownloadLink`(in chanId int, in downloadAppLink text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpdateChannelDownloadLink`(in chanId int, in downloadAppLink text)
 BEGIN
 
 
@@ -11995,7 +11995,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `DIY_updateChannelGlobalToken`(IN chanId INT, IN newTokenKey TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DIY_updateChannelGlobalToken`(IN chanId INT, IN newTokenKey TEXT)
 BEGIN
 
 DECLARE oldTokKey TEXT;
@@ -12068,7 +12068,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `DIY_UpdateChannelIpRangeV3`(IN chanId INT,IN ipAddress TEXT,IN operation TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DIY_UpdateChannelIpRangeV3`(IN chanId INT,IN ipAddress TEXT,IN operation TEXT)
 BEGIN
   UPDATE channel_setting SET valid_console_ip=ipAddress WHERE channelid = chanId;
 END ;;
@@ -12087,7 +12087,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpdateCustomEmailTemplate`(IN chanId INT,in fromName text,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpdateCustomEmailTemplate`(IN chanId INT,in fromName text,
             IN isInviteMailCustom BOOL,  IN isForgotPwdMailCustom BOOL,
             IN inviteMailSubject TEXT, IN inviteMailHtml TEXT,
             IN forgotPwdMailSubject TEXT, IN forgotPwdMailHtml TEXT)
@@ -12162,7 +12162,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_updatecustomSSO_credential`(in chanId int,in ssoId text,  in ssoSecret text)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_updatecustomSSO_credential`(in chanId int,in ssoId text,  in ssoSecret text)
 BEGIN
     if not exists(select * from channel_custom_sso_credential where channelid=chanId and sso_id=ssoId and sso_secret=ssoSecret )then
     insert into channel_custom_sso_credential(channelid, sso_id, sso_secret, created_on)value(chanId,ssoId,ssoSecret,now());
@@ -12185,7 +12185,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpdatePrivacySupportURL`(IN chanId INT, IN privacyUrl VARCHAR(255),IN supportUrl VARCHAR(255),IN supportMail varchar(255))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpdatePrivacySupportURL`(IN chanId INT, IN privacyUrl VARCHAR(255),IN supportUrl VARCHAR(255),IN supportMail varchar(255))
 BEGIN
 
 IF exists(select * from channelrights where channelid = chanId)Then
@@ -12215,7 +12215,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpdateTimezone`(IN chZonetype TEXT, IN chZoneId TEXT, IN channel TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpdateTimezone`(IN chZonetype TEXT, IN chZoneId TEXT, IN channel TEXT)
 BEGIN
 
 	CALL SetChannelTimezone(chZonetype, chZoneId, channel);
@@ -12236,7 +12236,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpdateUserExternalAuth`(IN urId INT, IN refreshToken TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpdateUserExternalAuth`(IN urId INT, IN refreshToken TEXT,
 
     IN accessToken VARCHAR(1255), IN validTill INT, IN oauthProvider TEXT, IN externalProviderResp TEXT)
 BEGIN
@@ -12301,7 +12301,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpdateUserFavIcons`(IN urId INT, IN chanId INT, IN addList TEXT, IN removeList TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpdateUserFavIcons`(IN urId INT, IN chanId INT, IN addList TEXT, IN removeList TEXT)
 BEGIN
 
 DECLARE iconLimit, iconCounter, iconId INT DEFAULT 0;
@@ -12389,7 +12389,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_updateUserInfo`(in urId int,in userName text,in userdesg text,in country text,in city text,in Uabouts text,in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_updateUserInfo`(in urId int,in userName text,in userdesg text,in country text,in city text,in Uabouts text,in chanId int)
 BEGIN
 DECLARE usrId, respType, uProfileReadOnly INT DEFAULT 0;
 IF EXISTS(SELECT * FROM channel_setting WHERE channelid = chanId)THEN
@@ -12427,7 +12427,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_UpgradeAck`(IN urId INT, IN appName TEXT, IN deviceType TEXT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_UpgradeAck`(IN urId INT, IN appName TEXT, IN deviceType TEXT, IN chanId INT)
 BEGIN
 
 
@@ -12472,7 +12472,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_ValidateUserNonce`(IN nonce VARCHAR(10), IN urId INT, IN userEmail TEXT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_ValidateUserNonce`(IN nonce VARCHAR(10), IN urId INT, IN userEmail TEXT, IN chanId INT)
 BEGIN
 
 DECLARE isValid INT DEFAULT 0;
@@ -12513,7 +12513,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_ValidateUserNonce_V2`(IN nonce VARCHAR(10), IN urId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `diy_ValidateUserNonce_V2`(IN nonce VARCHAR(10), IN urId INT)
 BEGIN
 DECLARE isValid INT DEFAULT 0;
 DECLARE u_Id INT DEFAULT 0;
@@ -12543,7 +12543,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `diy_ValidateUserWithExternalAuth`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `diy_ValidateUserWithExternalAuth`(IN urId INT, IN chanId INT)
 BEGIN
 
   DECLARE returnType, usrId INT DEFAULT 0;
@@ -12598,7 +12598,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_add_modify_api_category_v4`(IN categoryId INT, IN channelId INT, IN catName TEXT,IN catDesc TEXT, IN catIcon TEXT, IN schemeType TEXT, IN updatedBy TEXT, IN catType TEXT)
+CREATE DEFINER=`root`@`%` PROCEDURE `fb_add_modify_api_category_v4`(IN categoryId INT, IN channelId INT, IN catName TEXT,IN catDesc TEXT, IN catIcon TEXT, IN schemeType TEXT, IN updatedBy TEXT, IN catType TEXT)
 BEGIN
 	DECLARE resp INT DEFAULT 0;
 	IF categoryId = 0 THEN
@@ -12632,7 +12632,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_add_update_delete_ai_key`(IN channelId INT, IN key_name TEXT, IN key_data longtext, IN user_email TEXT, IN isdefault INT, IN operation TEXT)
+CREATE DEFINER=`root`@`%` PROCEDURE `fb_add_update_delete_ai_key`(IN channelId INT, IN key_name TEXT, IN key_data longtext, IN user_email TEXT, IN isdefault INT, IN operation TEXT)
 BEGIN
 	DECLARE hasclone INT DEFAULT 0;
 	IF operation = "add" THEN
@@ -12677,7 +12677,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_add_update_gateway_key`(IN channelId INT,IN unique_name TEXT,IN keys_data TEXT,IN user_email TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_add_update_gateway_key`(IN channelId INT,IN unique_name TEXT,IN keys_data TEXT,IN user_email TEXT)
 BEGIN
 			IF NOT EXISTS( select 1 from studio_gateway_key sgk where sgk.name = unique_name)
 			THEN
@@ -12707,7 +12707,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_change_function_status`(IN function_id INT,IN function_type INT,IN state INT,IN is_promiss INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_change_function_status`(IN function_id INT,IN function_type INT,IN state INT,IN is_promiss INT)
 BEGIN
    DECLARE nameAlreadyExists INT default 0;
     /*IF action = add, check if function with same name doesnt exist in same channel*/
@@ -12734,7 +12734,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_CreateOrEditFormbuilder`(IN pluginId INT, IN chanId INT, IN editorJson LONGTEXT, IN userId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_CreateOrEditFormbuilder`(IN pluginId INT, IN chanId INT, IN editorJson LONGTEXT, IN userId INT)
 BEGIN
 	DECLARE CurrentDt DATETIME DEFAULT NOW();
     DECLARE entryCount INT DEFAULT 0;
@@ -12769,7 +12769,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_GetFormBuilderVersionDataByFdpId`(IN fdpId INT, IN channelId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_GetFormBuilderVersionDataByFdpId`(IN fdpId INT, IN channelId INT)
 BEGIN
 	DROP TEMPORARY TABLE IF EXISTS VersionDataTable;
 	CREATE TEMPORARY TABLE VersionDataTable AS  
@@ -12807,7 +12807,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_GetFormBuilderVersionsByPluginId`(IN pluginId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_GetFormBuilderVersionsByPluginId`(IN pluginId int)
 BEGIN
 	SELECT fdp.fdp_id,fdp.fdp_version,fdp.release_notes,fdp.created_date,fdp.environment_type,ui.uname
     FROM formbuilder_download_publish fdp
@@ -12831,7 +12831,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_GetUserOnboardingStatus`(IN channelId INT, IN uemail VARCHAR(250))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_GetUserOnboardingStatus`(IN channelId INT, IN uemail VARCHAR(250))
 BEGIN
 	DECLARE selectedUid INT;
 	
@@ -12868,7 +12868,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_ai_key`(IN account_name TEXT,IN channelid INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `fb_get_ai_key`(IN account_name TEXT,IN channelid INT)
 BEGIN
     IF account_name <> "" THEN
         SELECT `key` FROM `studio_ai_keys` 
@@ -12893,7 +12893,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_all_public_gateway_key`(IN channelId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `fb_get_all_public_gateway_key`(IN channelId INT)
 BEGIN
     SELECT tokens.keys, tokens.name 
     FROM studio_gateway_key tokens
@@ -12914,7 +12914,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_api_category_meta_info`(IN channelId INT, IN catId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_api_category_meta_info`(IN channelId INT, IN catId INT)
 BEGIN
 	SELECT `api_category_id` as `cat_id`, `channel_id`, `cat_name`, `cat_desc`, `cat_image_url` as `cat_icon`, `scheme_type`, `mongo_doc_id` as `doc_id`
     FROM `api_category` where `channel_id` = channelId  AND `api_category_id` = catId LIMIT 1;
@@ -12934,7 +12934,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_control_for_marketplace`(IN globalChannelID INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_control_for_marketplace`(IN globalChannelID INT)
 BEGIN
 	SELECT id as `control_id`,name as control_name ,'0.0.0' as `ver`
     FROM studio_controls sc
@@ -12955,7 +12955,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_published_controls_v3`(IN channel_id INT,IN userEmail TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_published_controls_v3`(IN channel_id INT,IN userEmail TEXT)
 BEGIN
 	SELECT id as `control_id`, name as `control_name`, current_version as `ver`,g_id as `group_id`,user,is_deprecated AS 'isDeprecated',is_from_designer AS 'isDesigner', dependencyJSON ,
     CASE WHEN sc.channel_id = 0 THEN 0
@@ -12982,7 +12982,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_published_functions`(IN channel_id INT, IN globalChannelId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_published_functions`(IN channel_id INT, IN globalChannelId INT)
 BEGIN
 	-- 1154
 SELECT id as `function_id`,current_version as `ver`,function_type as `type`,is_promiss as `promiss`,
@@ -13008,7 +13008,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_studio_control_status`(IN chanID INT,IN getGlobalChannelControls INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_studio_control_status`(IN chanID INT,IN getGlobalChannelControls INT)
 BEGIN
 	IF getGlobalChannelControls THEN 
 			SELECT id as 'control_id',g_id as 'group',status,is_deprecated AS 'isDeprecated',is_from_designer AS 'isFromDesigner',is_on_marketplace AS 'isOnMarketplace'
@@ -13036,7 +13036,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_studio_function_status`(IN chanID INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_studio_function_status`(IN chanID INT)
 BEGIN
 	SELECT id as 'function_id',status,function_type,is_promiss
 	FROM studio_functions 
@@ -13057,7 +13057,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_studio_template_ids_v2`(IN chanID INT,IN search_for varchar(20))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_studio_template_ids_v2`(IN chanID INT,IN search_for varchar(20))
 BEGIN
 	IF (search_for = "showcase") THEN
 		SELECT  id as 'template_id'
@@ -13084,7 +13084,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_template_key_list`(IN templateID INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_template_key_list`(IN templateID INT)
 BEGIN
 	DECLARE noKeysFoundForTemplate INT DEFAULT -1;
     IF EXISTS(SELECT 1 FROM studio_template_keys stk WHERE stk.template_id = templateID)
@@ -13109,7 +13109,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_get_template_meta`(IN plugin_id INT,IN template_id INT,IN search_type TEXT,IN channel_id INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_get_template_meta`(IN plugin_id INT,IN template_id INT,IN search_type TEXT,IN channel_id INT)
 BEGIN
 DECLARE dVal INT DEFAULT -1;
     IF (search_type = "pid") THEN
@@ -13166,7 +13166,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_InsertFormbuilderDownloadPublish`(fdpSecretKey TEXT, pluginId INT, userId INT, formEditor LONGTEXT, IN conditionalVisibilityData LONGTEXT, IN validationData LONGTEXT, fdpType VARCHAR(10), IN newVersion VARCHAR(10), IN releaseNotes VARCHAR(200), IN environmentType VARCHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_InsertFormbuilderDownloadPublish`(fdpSecretKey TEXT, pluginId INT, userId INT, formEditor LONGTEXT, IN conditionalVisibilityData LONGTEXT, IN validationData LONGTEXT, fdpType VARCHAR(10), IN newVersion VARCHAR(10), IN releaseNotes VARCHAR(200), IN environmentType VARCHAR(10))
 BEGIN
 	DECLARE frmId INT DEFAULT 0;
 	SELECT formid FROM formbuilder_tool WHERE plugin_id = pluginId INTO frmId;
@@ -13195,7 +13195,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_save_app_template_v2`( IN channel_id INT,IN userEmail TEXT,IN actionType TEXT,IN status TEXT,IN plugin_id INT,IN is_premium bool,IN is_show_case bool)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_save_app_template_v2`( IN channel_id INT,IN userEmail TEXT,IN actionType TEXT,IN status TEXT,IN plugin_id INT,IN is_premium bool,IN is_show_case bool)
 BEGIN
 	IF NOT EXISTS(SELECT 1 FROM studio_templates st WHERE st.plugin_id = plugin_id)
 		THEN
@@ -13226,7 +13226,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_save_studio_control_v4`(IN control_name TEXT,IN group_id INT,IN channel_id INT,IN userEmail TEXT,IN actionType TEXT,IN status TEXT, IN isDesigner INT,IN GlobalChannelId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_save_studio_control_v4`(IN control_name TEXT,IN group_id INT,IN channel_id INT,IN userEmail TEXT,IN actionType TEXT,IN status TEXT, IN isDesigner INT,IN GlobalChannelId INT)
 BEGIN
 
 DECLARE nameAlreadyExists INT default 0;
@@ -13286,7 +13286,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_save_studio_function`(IN function_name TEXT,IN channel_id INT,IN globalChannelID INT,IN actionType TEXT,IN status INT, IN isPromiss INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_save_studio_function`(IN function_name TEXT,IN channel_id INT,IN globalChannelID INT,IN actionType TEXT,IN status INT, IN isPromiss INT)
 BEGIN
 	
 DECLARE nameAlreadyExists INT default 0;
@@ -13328,7 +13328,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_update_api_category_mongo_id`(IN channelId INT, IN catId INT, IN mongoId TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_update_api_category_mongo_id`(IN channelId INT, IN catId INT, IN mongoId TEXT)
 BEGIN
 	IF EXISTS(SELECT 1 FROM api_category WHERE api_category_id = catId AND channel_id = channelId) THEN
 		UPDATE `api_category`
@@ -13351,7 +13351,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_update_control_meta_v3`(IN isDeprecated INT,IN id INT,IN group_id INT,IN status INT,IN isOnMarketplace INT,IN dependencyJSONStringified TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_update_control_meta_v3`(IN isDeprecated INT,IN id INT,IN group_id INT,IN status INT,IN isOnMarketplace INT,IN dependencyJSONStringified TEXT)
 BEGIN
 	IF EXISTS(SELECT 1 FROM studio_controls sc WHERE sc.id = id)
 			THEN
@@ -13382,7 +13382,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_update_control_version`(IN control_id TEXT,IN current_version TEXT,IN release_note MEDIUMTEXT)
+CREATE DEFINER=`root`@`%` PROCEDURE `fb_update_control_version`(IN control_id TEXT,IN current_version TEXT,IN release_note MEDIUMTEXT)
 BEGIN
 	UPDATE studio_controls
 	SET `current_version` = current_version,
@@ -13405,7 +13405,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_update_function_version`(IN function_id TEXT,IN current_version TEXT, IN release_note MEDIUMTEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_update_function_version`(IN function_id TEXT,IN current_version TEXT, IN release_note MEDIUMTEXT)
 BEGIN
 	UPDATE studio_functions
 	SET `current_version` = current_version,
@@ -13427,7 +13427,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `fb_update_template_keycode_used`(IN key_code VARCHAR(13))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `fb_update_template_keycode_used`(IN key_code VARCHAR(13))
 BEGIN
 	IF EXISTS(SELECT 1 FROM studio_template_keys sk WHERE  sk.key_code = key_code )
 			THEN
@@ -13451,7 +13451,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `getAPISelectedCatInfo`(in catIds TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAPISelectedCatInfo`(in catIds TEXT)
 BEGIN
 
     SELECT *, ac.isDeleted as api_del, sc.isDeleted as subCat_del FROM api_category ac
@@ -13476,7 +13476,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetAWSCredentials`(IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAWSCredentials`(IN chanName TEXT)
 BEGIN
 
 DECLARE chanId INT;
@@ -13500,7 +13500,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `getChannelIdUsingEmail`(IN email TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getChannelIdUsingEmail`(IN email TEXT)
 BEGIN
 	select ud.channelid from userinfo ui
 	JOIN userdetails ud on ud.userid = ui.userid
@@ -13521,7 +13521,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetChannelInfo`(in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetChannelInfo`(in chanName text)
 BEGIN
 
 select c.channelid, c.channelname, c.channelinfo, c.channelimg, c.registrationdatetime, c.display, c.bannerimg,
@@ -13546,7 +13546,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetChannelMailSettings`(IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetChannelMailSettings`(IN chanId INT)
 BEGIN
 
 
@@ -13692,7 +13692,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetChannelTimezone`(IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetChannelTimezone`(IN chanName TEXT)
 BEGIN
 
 DECLARE chanId INT;
@@ -13717,7 +13717,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetEmailTemplate`(IN mailContext TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetEmailTemplate`(IN mailContext TEXT)
 BEGIN
 
 SELECT emailsubject, emailhtmlbody, emailbcc FROM emailtemplate WHERE emailcontext = mailContext;
@@ -13738,7 +13738,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetLicensedSpace`(IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetLicensedSpace`(IN chanName TEXT)
 BEGIN
 
 DECLARE chanId INT;
@@ -13763,7 +13763,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetLicenseStatus`(IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetLicenseStatus`(IN chanName TEXT)
 BEGIN
 
 DECLARE chanId INT;
@@ -13793,7 +13793,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `getPluginTokens`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getPluginTokens`()
 BEGIN
 
   SELECT tokenkey FROM plugin_token;
@@ -13814,7 +13814,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetSaaSLicenseDetails`(IN chanName TEXT)
+CREATE DEFINER=`root`@`%` PROCEDURE `GetSaaSLicenseDetails`(IN chanName TEXT)
 BEGIN
 
 DECLARE chanId, licDuration, licUser, licDelivery, licPush, licBcm, licCateg, userCount, deliveryCount, pushCnt, bcmCount, categCount INT;
@@ -13873,7 +13873,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetSaaSLicenseDetailsV3`(IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetSaaSLicenseDetailsV3`(IN chanName TEXT)
 BEGIN
 DECLARE chanId, licDuration, licUser, userCount INT;
 DECLARE planType, channelMail TEXT;
@@ -13914,7 +13914,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `GetUserListbycontentComment`(in contentId int,in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserListbycontentComment`(in contentId int,in chanId int)
 BEGIN
 
  SELECT distinct uid,
@@ -13941,7 +13941,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `getUserSSOToken`(IN userEmail TEXT)
+CREATE DEFINER=`root`@`%` PROCEDURE `getUserSSOToken`(IN userEmail TEXT)
 BEGIN
 	DECLARE usrId INT;
 	select userid from userinfo where uemail = userEmail into usrId;
@@ -13962,7 +13962,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `get_channel_list`(IN u_Id INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_channel_list`(IN u_Id INT)
 BEGIN
 
 
@@ -14021,7 +14021,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `increment_console_login_failed_counter`(IN adminId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `increment_console_login_failed_counter`(IN adminId INT)
 BEGIN
 
 
@@ -14066,7 +14066,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `oauth_CheckClient`(IN clientId VARCHAR(255), IN clientSecret VARCHAR(255))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `oauth_CheckClient`(IN clientId VARCHAR(255), IN clientSecret VARCHAR(255))
 BEGIN
 
   -- Check if this is a valid client or not
@@ -14101,7 +14101,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `oauth_DeactivateToken`(IN tokenId INT, IN urId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `oauth_DeactivateToken`(IN tokenId INT, IN urId INT)
 BEGIN
 
 
@@ -14168,7 +14168,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `oauth_SetAccessToken`(IN urId INT, IN chanId INT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `oauth_SetAccessToken`(IN urId INT, IN chanId INT,
 
     IN devId VARCHAR(255), IN appId INT, IN accessToken VARCHAR(255),
 
@@ -14227,7 +14227,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `oauth_UpdatetAccessToken`(IN usrId INT, IN tokenId INT, IN accessToken TEXT, IN expireInSec INT, IN ipAddr TEXT, IN userAgentString TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `oauth_UpdatetAccessToken`(IN usrId INT, IN tokenId INT, IN accessToken TEXT, IN expireInSec INT, IN ipAddr TEXT, IN userAgentString TEXT)
 BEGIN
 
 
@@ -14304,7 +14304,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `oauth_ValidateAccessToken`(IN accessToken VARCHAR(255))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `oauth_ValidateAccessToken`(IN accessToken VARCHAR(255))
 BEGIN
   DECLARE currDate DATETIME;
   DECLARE urId INT DEFAULT 0;
@@ -14349,7 +14349,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `oauth_ValidateRefreshToken_v2`(IN refreshToken VARCHAR(255), IN appId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `oauth_ValidateRefreshToken_v2`(IN refreshToken VARCHAR(255), IN appId INT)
 BEGIN
   DECLARE urId, chanId, refExpDuration, tokId,usrId INT DEFAULT 0;
   DECLARE loginDate, refExpDate DATETIME;
@@ -14431,7 +14431,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `OnpremGetPlanCountDetails`(IN channelId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `OnpremGetPlanCountDetails`(IN channelId INT)
 BEGIN
 	select	lennahc_json as plan_details,
 			tnuoc_json as count_json,
@@ -14453,7 +14453,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `plugin_ChangeAppStatus`(IN pluginId INT, IN chanId INT,IN appStatus TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `plugin_ChangeAppStatus`(IN pluginId INT, IN chanId INT,IN appStatus TEXT)
 BEGIN
 
 IF(appStatus = 'delete') THEN
@@ -14505,7 +14505,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `plugin_channelname`(in chnlid text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `plugin_channelname`(in chnlid text)
 BEGIN
 
 select channelname from channel where channelid = chnlid;
@@ -14526,7 +14526,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `plugin_GetApp`(IN pluginId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `plugin_GetApp`(IN pluginId INT, IN chanId INT)
 BEGIN
 
   DECLARE latestVer INT;
@@ -14610,7 +14610,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `plugin_GetAppV3`(IN pluginId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `plugin_GetAppV3`(IN pluginId INT, IN chanId INT)
 BEGIN
 
 DECLARE latestversion TEXT;
@@ -14688,7 +14688,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `plugin_GetUniversalLinkKeyUnique`(IN uKey TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `plugin_GetUniversalLinkKeyUnique`(IN uKey TEXT)
 BEGIN
 
 SELECT unique_key
@@ -14711,7 +14711,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `plugin_UpdateAppDetails`(IN pluginId INT, IN appName VARCHAR(145), IN appDesc VARCHAR(245),IN appType VARCHAR(25),
+CREATE DEFINER=`root`@`%` PROCEDURE `plugin_UpdateAppDetails`(IN pluginId INT, IN appName VARCHAR(145), IN appDesc VARCHAR(245),IN appType VARCHAR(25),
     IN appIconXHDPI VARCHAR(145), IN appIconHDPI VARCHAR(145), IN appIconMDPI VARCHAR(145), IN appIconLDPI VARCHAR(145),IN templateId INT, IN chanId INT)
 BEGIN
 
@@ -14837,7 +14837,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `plugin_validtokenkey`(in tokKey text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `plugin_validtokenkey`(in tokKey text)
 BEGIN
 
   SELECT pt.channelid, pt.token_id, pt.token_type, ch.channelname, pt.plugin_id, pa.plugin_name,
@@ -14867,7 +14867,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `RegisterLicenseInOnprem`(IN channelId INT, IN planDetails LONGTEXT, IN countJsn LONGTEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RegisterLicenseInOnprem`(IN channelId INT, IN planDetails LONGTEXT, IN countJsn LONGTEXT)
 BEGIN
 	
 	IF NOT EXISTS (SELECT 1 FROM sliated_nalp_merpno WHERE channel_id = channelId) THEN
@@ -14894,7 +14894,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `saveInstalledGlobalAPISubCategorydetails`(IN channelId INT, IN catId INT, IN subCatId INT, IN catName TEXT, IN catMethod TEXT, IN formatId TEXT, IN pluginId INT, IN isSubCatInstalled INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `saveInstalledGlobalAPISubCategorydetails`(IN channelId INT, IN catId INT, IN subCatId INT, IN catName TEXT, IN catMethod TEXT, IN formatId TEXT, IN pluginId INT, IN isSubCatInstalled INT)
 BEGIN
 	DECLARE sub_cat_id INT default 0;
     DECLARE duplicate_name_count INT default 0;
@@ -14937,7 +14937,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `saveSubCatDetailsFromAutomation`(IN channelId INT, IN catId INT, IN subCatId INT, IN catName TEXT, IN catMethod TEXT, IN pluginId INT, IN reference TEXT)
+CREATE DEFINER=`root`@`%` PROCEDURE `saveSubCatDetailsFromAutomation`(IN channelId INT, IN catId INT, IN subCatId INT, IN catName TEXT, IN catMethod TEXT, IN pluginId INT, IN reference TEXT)
 BEGIN
 	DECLARE sub_cat_id INT default 0;
     DECLARE duplicate_name_count INT default 0;
@@ -14985,7 +14985,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `SetAWSCredentials`(IN chanName TEXT, IN publicKey TEXT, IN scrtKey TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SetAWSCredentials`(IN chanName TEXT, IN publicKey TEXT, IN scrtKey TEXT)
 BEGIN
 
 DECLARE chanId INT;
@@ -15013,7 +15013,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `SetChannelTimezone`(IN timezoneDname TEXT, IN timezoneId TEXT, IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SetChannelTimezone`(IN timezoneDname TEXT, IN timezoneId TEXT, IN chanName TEXT)
 BEGIN
 
 DECLARE chanId INT;
@@ -15042,7 +15042,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `SetGroupCampaignHistory`(in groupId int, in campaignId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SetGroupCampaignHistory`(in groupId int, in campaignId int)
 BEGIN
 
 insert into groupcampaignhistory values (groupId, campaignId, now());
@@ -15063,7 +15063,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `setPluginAppUserEnvironmentDetails`(in urId int,in newEnvironment TEXT,IN pluginId INT, IN chanId INT,IN act Varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `setPluginAppUserEnvironmentDetails`(in urId int,in newEnvironment TEXT,IN pluginId INT, IN chanId INT,IN act Varchar(45))
 BEGIN
 
 
@@ -15101,7 +15101,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_create_update_jwt_sso_oauth_data`(
+CREATE DEFINER=`root`@`%` PROCEDURE `sp_create_update_jwt_sso_oauth_data`(
  in ssoName text
 ,in providerid text
 ,in ssotype int
@@ -15185,7 +15185,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_create_update_sso_oauth_data`(in ssoName text
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_create_update_sso_oauth_data`(in ssoName text
 ,in channelId int
 ,in domainName text
 ,in clientId text
@@ -15272,7 +15272,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_getALLSSOList`(IN channelId int)
+CREATE DEFINER=`root`@`%` PROCEDURE `sp_getALLSSOList`(IN channelId int)
 BEGIN
 
    drop temporary table if exists tempSSOList;
@@ -15310,7 +15310,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_getSingleSSOInfo`(IN channelId int,IN ssoID int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getSingleSSOInfo`(IN channelId int,IN ssoID int)
 BEGIN
 	SELECT * FROM sso_auth_config WHERE channel_id = channelId AND id = ssoID;
 END ;;
@@ -15329,7 +15329,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_getSingleSSOuth`(in chanId int,in ssoId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getSingleSSOuth`(in chanId int,in ssoId int)
 BEGIN
 
  select * from channel_oauth_sso_config where channel_id=chanId and oauth_id=ssoId;
@@ -15350,7 +15350,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_insertWhitelistIpPluginApi`(IN chanId INT,IN pluginId INT,IN ipAddress TEXT, IN actionW TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insertWhitelistIpPluginApi`(IN chanId INT,IN pluginId INT,IN ipAddress TEXT, IN actionW TEXT)
 BEGIN
 
 DECLARE isSuccess INT DEFAULT 0;
@@ -15385,7 +15385,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_updateSSOOauthStatus`(IN channelId int, IN ssoID int,IN statusVal int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_updateSSOOauthStatus`(IN channelId int, IN ssoID int,IN statusVal int)
 BEGIN
 	UPDATE channel_oauth_sso_config SET oauth_status = statusVal WHERE channel_id = channelId AND oauth_id = ssoID;
     SELECT ssoID;
@@ -15405,7 +15405,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_updateSSOStatus`(IN channelId int, IN ssoID int,IN statusVal int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_updateSSOStatus`(IN channelId int, IN ssoID int,IN statusVal int)
 BEGIN
 	UPDATE sso_auth_config SET `status` = statusVal WHERE channel_id = channelId AND id = ssoID;
     SELECT ssoID;
@@ -15425,7 +15425,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_update_google_jwtSSOOauthStatus`(IN channelId int, IN ssoID int,IN statusVal int)
+CREATE DEFINER=`root`@`%` PROCEDURE `sp_update_google_jwtSSOOauthStatus`(IN channelId int, IN ssoID int,IN statusVal int)
 BEGIN
 
 IF exists(SELECT * FROM channel_oauth_sso_jwtgoogle_config WHERE channel_id = channelId and jwtoauth_id=ssoID)THEN
@@ -15451,7 +15451,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `sp_upsertSSOSAMLData_v2`(IN ssoName varchar(200), IN channelId int,  IN emailId varchar(200),  IN ssoType varchar(200),  IN hasMetaFile varchar(200),  IN mfAttributesList LONGTEXT,  IN domainURL TEXT,  IN sEntityId varchar(200),  IN sLoginSso_Url TEXT, IN sCertificateFileContent LONGTEXT, IN sBindingType varchar(200),  IN sAuthSignedRequest varchar(20),  IN editSSOId int, IN samlJitAccess int, IN samlScimAccess int, IN samlScimAuthToken TEXT
+CREATE DEFINER=`root`@`%` PROCEDURE `sp_upsertSSOSAMLData_v2`(IN ssoName varchar(200), IN channelId int,  IN emailId varchar(200),  IN ssoType varchar(200),  IN hasMetaFile varchar(200),  IN mfAttributesList LONGTEXT,  IN domainURL TEXT,  IN sEntityId varchar(200),  IN sLoginSso_Url TEXT, IN sCertificateFileContent LONGTEXT, IN sBindingType varchar(200),  IN sAuthSignedRequest varchar(20),  IN editSSOId int, IN samlJitAccess int, IN samlScimAccess int, IN samlScimAuthToken TEXT
 )
 BEGIN
     IF (editSSOId = 0) THEN
@@ -15516,7 +15516,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `studio_environment_add`(IN channelId INT, IN envName TEXT, IN sheetEnv TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `studio_environment_add`(IN channelId INT, IN envName TEXT, IN sheetEnv TEXT)
 BEGIN
 	IF channelId = 0 THEN
 		SELECT 0 AS 'result', 'Cannot add default environment.' AS 'message', 0 AS 'env_id';
@@ -15545,7 +15545,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `studio_environment_delete`(IN channelId INT, IN envId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `studio_environment_delete`(IN channelId INT, IN envId INT)
 BEGIN
 	IF channelId = 0 THEN
 		SELECT 0 AS 'result', 'Cannot delete default environment.' AS 'message', envId AS 'env_id';
@@ -15573,7 +15573,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `studio_environment_edit`(IN channelId INT, IN envId INT, IN envName TEXT, IN sheetEnv TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `studio_environment_edit`(IN channelId INT, IN envId INT, IN envName TEXT, IN sheetEnv TEXT)
 BEGIN
 	IF channelId = 0 THEN
 		SELECT 0 AS 'result', 'Cannot rename default environment.' AS 'message', envId AS 'env_id', envName AS 'env_name', sheetEnv AS 'sheet_env';
@@ -15601,7 +15601,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `studio_environment_get`(IN channelId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `studio_environment_get`(IN channelId INT)
 BEGIN
 	SELECT * FROM studio_environments
 	WHERE channel_id = 0 OR channel_id = channelId;
@@ -15622,7 +15622,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `UpdateActionBtnOrder`(in actionId int, in displayIndex int,in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateActionBtnOrder`(in actionId int, in displayIndex int,in chanName text)
 BEGIN
 
 declare chanId, returnType int default 2;
@@ -15653,7 +15653,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `updateCatalogueOrder`(IN chanId INT, IN tempId INT,IN displayIndex int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCatalogueOrder`(IN chanId INT, IN tempId INT,IN displayIndex int)
 BEGIN
 
 
@@ -15684,7 +15684,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `UpdateCategoryOrder`(in categoryId int, in displayIndex int,in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateCategoryOrder`(in categoryId int, in displayIndex int,in chanName text)
 BEGIN
 
 
@@ -15727,7 +15727,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `updateOnpremPlanDetails`(IN channelId INT, IN channelJson LONGTEXT, IN countJson LONGTEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateOnpremPlanDetails`(IN channelId INT, IN channelJson LONGTEXT, IN countJson LONGTEXT,
 	IN exceptionJson LONGTEXT)
 BEGIN
 	UPDATE sliated_nalp_merpno SET
@@ -15753,7 +15753,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `updateOnpremTotalTaskUpdate`(IN channelId INT, IN countJson TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateOnpremTotalTaskUpdate`(IN channelId INT, IN countJson TEXT)
 BEGIN
 	UPDATE sliated_nalp_merpno 
     SET tnuoc_json = countJson
@@ -15774,7 +15774,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `upsertAdminInviteDetails`(
+CREATE DEFINER=`root`@`%` PROCEDURE `upsertAdminInviteDetails`(
 IN adminId INT, IN emailId TEXT, IN invitedOn DATETIME, IN inviteAcceptedOn DATETIME, IN verificationCode INT, IN verified TEXT, IN UserName TEXT, IN Password TEXT, IN companyName TEXT, IN phoneNo TEXT, IN res_type TEXT, IN admin_address TEXT, IN admin_website TEXT)
 BEGIN
 
@@ -15817,7 +15817,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v10_diy_GetCatAPILIST`(IN chanId INT, IN globalChannelId INT, IN pluginId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v10_diy_GetCatAPILIST`(IN chanId INT, IN globalChannelId INT, IN pluginId INT)
 BEGIN
   SELECT api_category_id, cat_name, cat_desc, cat_image_url, scheme_type, channel_id, create_on, created_by, updated_on, cat_type, 
 		sub_category_id, sub_category_name, sub_category_desc,sub_created_on,sub_modify_on ,category_id, sub_category_method,
@@ -15844,7 +15844,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v2_ActivateDeactivateUser`(in userIdBunch text, in activeDeactiveFlag int, in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v2_ActivateDeactivateUser`(in userIdBunch text, in activeDeactiveFlag int, in chanName text)
 BEGIN
 
 declare chanId, urId int;
@@ -15884,7 +15884,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `V2_ChangeGroupByUserId`(in userId int,in groupId TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `V2_ChangeGroupByUserId`(in userId int,in groupId TEXT)
 BEGIN
 
 DECLARE i, chanId INT DEFAULT 0;
@@ -15930,7 +15930,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `V2_ChangeUserNameByUserId`(in urId int,in userName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `V2_ChangeUserNameByUserId`(in urId int,in userName TEXT)
 BEGIN
 
 
@@ -15967,7 +15967,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v2_CreateChannelCode`(in chanName text,in requestId text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v2_CreateChannelCode`(in chanName text,in requestId text)
 BEGIN
 
 Declare chan_code text;
@@ -16010,7 +16010,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `V2_CreatedActivateUser`(in username text,in emailid text,in designation text,in userhash Text,in usersalt text,in useritr text, in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `V2_CreatedActivateUser`(in username text,in emailid text,in designation text,in userhash Text,in usersalt text,in useritr text, in chanName text)
 BEGIN
 Declare chanId,usrId, urId int DEFAULT 0;
 declare resptype int DEFAULT 0;
@@ -16046,7 +16046,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v2_Create_Folder_App`(IN actitle TEXT, IN chanName TEXT,IN templateId INT,IN urId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v2_Create_Folder_App`(IN actitle TEXT, IN chanName TEXT,IN templateId INT,IN urId INT)
 BEGIN
 
  DECLARE chanId, indx INT;
@@ -16078,7 +16078,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v2_GetAppMetaList`(in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v2_GetAppMetaList`(in chanName text)
 BEGIN
 
 SELECT
@@ -16146,7 +16146,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v2_GetCategoryListingType`(in chanName text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v2_GetCategoryListingType`(in chanName text)
 BEGIN
 
 declare chanId INT;
@@ -16173,7 +16173,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `V2_GetRights`(IN roleId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `V2_GetRights`(IN roleId INT)
 BEGIN
 
 
@@ -16210,7 +16210,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `V2_GetUserActivationInfo`(in chan_code text,in u_code text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `V2_GetUserActivationInfo`(in chan_code text,in u_code text)
 BEGIN
 
 SELECT ch.channelname,ch.channelinfo,ch.display_name,cr.img_top_bar_xhdpi,ui.uname,ui.uemail,ud.registrationDate,ud.is_active, ud.uid, ui.is_verified FROM channel ch
@@ -16233,7 +16233,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `V2_SetUserPasswordRequest`(IN userMailId TEXT, IN passReqToken VARCHAR(150))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `V2_SetUserPasswordRequest`(IN userMailId TEXT, IN passReqToken VARCHAR(150))
 BEGIN
 
 DECLARE usrId, chanId INT DEFAULT 0;
@@ -16273,7 +16273,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v2_Update_Folder_App`(IN actitle TEXT, IN chanName TEXT,IN templateId INT,IN urId INT,IN actionId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v2_Update_Folder_App`(IN actitle TEXT, IN chanName TEXT,IN templateId INT,IN urId INT,IN actionId INT)
 BEGIN
  DECLARE chanId, indx INT;
  DECLARE actionButtonId INT default 0;
@@ -16301,7 +16301,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v3_GenerateSaasLicense`(IN chanName TEXT, IN planType TEXT, IN licDuration INT, IN startDateTime DATETIME, IN licCal TEXT, IN licSid TEXT, IN userCount INT, IN deliveryCount INT, IN diskSpace DOUBLE, IN pushContent INT, IN rba INT, IN whitelabel BOOL, IN contExpiry BOOL, IN subscrId TEXT, IN bcmCount INT, IN categCount INT, IN licType TEXT, IN licAction TEXT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v3_GenerateSaasLicense`(IN chanName TEXT, IN planType TEXT, IN licDuration INT, IN startDateTime DATETIME, IN licCal TEXT, IN licSid TEXT, IN userCount INT, IN deliveryCount INT, IN diskSpace DOUBLE, IN pushContent INT, IN rba INT, IN whitelabel BOOL, IN contExpiry BOOL, IN subscrId TEXT, IN bcmCount INT, IN categCount INT, IN licType TEXT, IN licAction TEXT)
 BEGIN
 
 DECLARE chanId INT;
@@ -16352,7 +16352,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_CreateCouchdbDetails`( in chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_CreateCouchdbDetails`( in chanId INT)
 BEGIN
 DECLARE resptype INT;
 SET resptype=0;
@@ -16380,7 +16380,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_create_embedbuilder`(in chanId int,in pluginId int,in emdCode text, in createdBy text,in readStatus int)
+CREATE DEFINER=`root`@`%` PROCEDURE `v7_create_embedbuilder`(in chanId int,in pluginId int,in emdCode text, in createdBy text,in readStatus int)
 BEGIN
   IF not exists(select * from formbuilder_embed where channel_id=chanId and plugin_id=pluginId) then
       insert into formbuilder_embed(embedcode, plugin_id, channel_id, created_by, created_date, ready_only,is_disable)
@@ -16407,7 +16407,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_deleteAPISubCategory`(in channelid INT, in catid int, in subcatid int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_deleteAPISubCategory`(in channelid INT, in catid int, in subcatid int)
 BEGIN
 	declare checkCat int default 0;
 	declare checkSubCat int default 0;
@@ -16440,7 +16440,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_deleteFolder`(IN fAbid INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v7_deleteFolder`(IN fAbid INT)
 BEGIN
     DECLARE resp INT DEFAULT 0;
     IF EXISTS(SELECT * FROM actionbutton WHERE abid = fAbid) THEN
@@ -16472,7 +16472,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `V7_diy_CreateNewChannel`(in chtype Text, in chZonetype Text,in s_ldpiImg text,in s_mdpiImg text,in s_hdpiImg text,in s_xhdpiImg text,in tb_ldpiImg text,in tb_mdpiImg text,in tb_hdpiImg text,in tb_xhdpiImg text,in chanTzoneId text,in ownerEmail text,in displayNm text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `V7_diy_CreateNewChannel`(in chtype Text, in chZonetype Text,in s_ldpiImg text,in s_mdpiImg text,in s_hdpiImg text,in s_xhdpiImg text,in tb_ldpiImg text,in tb_mdpiImg text,in tb_hdpiImg text,in tb_xhdpiImg text,in chanTzoneId text,in ownerEmail text,in displayNm text)
 BEGIN
 DECLARE chancontType, templateId INT;
 DECLARE  chanId, roleId, mgmtUser, groupId, campaignId INT;
@@ -16569,7 +16569,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_getAdminUsers`(IN chanId INT, IN catStr TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_diy_getAdminUsers`(IN chanId INT, IN catStr TEXT)
 BEGIN
 DECLARE ownerMail VARCHAR(250);
 
@@ -16616,7 +16616,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_GetAppList_ForUser`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_diy_GetAppList_ForUser`(IN urId INT, IN chanId INT)
 BEGIN
 
 
@@ -16772,7 +16772,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_GetCatAPILIST`(IN chanId INT, IN globalChannelId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_diy_GetCatAPILIST`(IN chanId INT, IN globalChannelId INT)
 BEGIN
 	SELECT api_category_id, cat_name, cat_desc, cat_image_url, scheme_type, channel_id, create_on, created_by, updated_on, 
 		sub_category_id, sub_category_name, sub_category_desc,sub_created_on,sub_modify_on ,category_id, sub_category_method,
@@ -16798,7 +16798,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_GetTemplates`(IN chanId INT,IN searchText TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_diy_GetTemplates`(IN chanId INT,IN searchText TEXT)
 BEGIN
 
 SELECT ct.*,v7_fnGetAppCount(chanId,ct.viewid) as app_count,
@@ -16828,7 +16828,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_GetTemplatesForAdmin`(IN chanId INT, IN urId INT,IN searchText TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_diy_GetTemplatesForAdmin`(IN chanId INT, IN urId INT,IN searchText TEXT)
 BEGIN
 
 DECLARE adminId INT;
@@ -16863,7 +16863,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_getUserDetailsbyuser`(in urIds text, in chanId Int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_diy_getUserDetailsbyuser`(in urIds text, in chanId Int)
 BEGIN
 declare  urId int;
 declare lastVal, counter int default 0;
@@ -16914,7 +16914,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_Report_GetUserCard`(IN urId INT,IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_diy_Report_GetUserCard`(IN urId INT,IN chanId INT)
 BEGIN
 DECLARE ownerMail VARCHAR(250);
 DECLARE isLocked bool;
@@ -16984,7 +16984,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_UpdateChannelBranding`(IN chanName TEXT, IN appName TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_diy_UpdateChannelBranding`(IN chanName TEXT, IN appName TEXT,
 
   IN appLogo_XXHDPI VARCHAR(200), IN appLogo_XHDPI VARCHAR(200), IN appLogo_HDPI VARCHAR(200), IN appLogo_MDPI VARCHAR(200), IN appLogo_LDPI VARCHAR(200),
 
@@ -17067,7 +17067,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_DIY_UpdateChannelSettingSecurity`(IN chanId INT, 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_DIY_UpdateChannelSettingSecurity`(IN chanId INT, 
     IN allowRootedDevice INT, 
      IN refreshExpiresIn INT,
      IN disableScreenshot INT, 
@@ -17117,7 +17117,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_diy_UserReports`(IN chanName TEXT, 
+CREATE DEFINER=`root`@`%` PROCEDURE `v7_diy_UserReports`(IN chanName TEXT, 
 IN groupId TEXT, 
 IN searchText TEXT, 
 IN maxUid INT,
@@ -17210,7 +17210,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_getAccUserInfo`(in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_getAccUserInfo`(in chanId int)
 BEGIN
 
 declare uemailId text;
@@ -17235,7 +17235,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_GetAPICategoryDetailsV1`(in chanId int, IN globalChannelId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_GetAPICategoryDetailsV1`(in chanId int, IN globalChannelId INT)
 BEGIN
 
 SELECT *, IF(channel_id = globalChannelId and chanId != globalChannelId, 1, 0) isGlobal
@@ -17258,7 +17258,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_GetAPICategoryDetails_v3`(in chanId int, IN globalChannelId INT,IN catList Text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_GetAPICategoryDetails_v3`(in chanId int, IN globalChannelId INT,IN catList Text)
 BEGIN
 SELECT 	*,
 	IF(channel_id = globalChannelId and chanId != globalChannelId, 1, 0) isGlobal
@@ -17292,7 +17292,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_GetBetaUsersEnv`(in chanId INT,in groupIds Text,in pluginId INT,in pageOffset int, in returnSize int,in searchTxt text, in stype Text )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_GetBetaUsersEnv`(in chanId INT,in groupIds Text,in pluginId INT,in pageOffset int, in returnSize int,in searchTxt text, in stype Text )
 BEGIN
 select
 ud.uid,
@@ -17327,7 +17327,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_GetCategoryListAsPerTemplate`(IN templateId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_GetCategoryListAsPerTemplate`(IN templateId INT, IN chanId INT)
 BEGIN
 
 DECLARE mstr BOOL;
@@ -17417,7 +17417,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_GetCouchdbDetails`(in chanId int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_GetCouchdbDetails`(in chanId int)
 BEGIN
 
 DECLARE token_key TEXT;
@@ -17442,7 +17442,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_getFolderApps`(IN folderId Int, IN chanId INT,IN urId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v7_getFolderApps`(IN folderId Int, IN chanId INT,IN urId INT)
 BEGIN
 DECLARE mstr BOOL;
  DECLARE total_apps INT DEFAULT 0;
@@ -17578,7 +17578,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_getPluginLatestVersion`(IN pluginId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_getPluginLatestVersion`(IN pluginId INT, IN chanId INT)
 BEGIN
 
 IF EXISTS (SELECT * FROM plugin_app WHERE plugin_id = pluginId AND channelid = chanId) THEN
@@ -17603,7 +17603,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_getPluginUrl`(IN pluginId INT,IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_getPluginUrl`(IN pluginId INT,IN chanId INT)
 BEGIN
 DECLARE pluginWebUrl TEXT;
   SELECT plugin_web_url FROM plugin_app_version WHERE plugin_ver_id = (SELECT latest_version FROM plugin_app WHERE plugin_id = pluginId) INTO pluginWebUrl;
@@ -17625,7 +17625,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_GetSaasCurrentLicenseDetails`(IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_GetSaasCurrentLicenseDetails`(IN chanName TEXT)
 BEGIN
 DECLARE chanId, licDuration, licUser, userCount INT;
 DECLARE planType, channelMail TEXT;
@@ -17671,7 +17671,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `V7_GetSaaSLicenseDetails`(IN chanName TEXT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `V7_GetSaaSLicenseDetails`(IN chanName TEXT)
 BEGIN
 
 DECLARE chanId, licDuration, licUser, licDelivery, licPush, licBcm, licCateg, userCount, deliveryCount, pushCnt, bcmCount, categCount INT;
@@ -17730,7 +17730,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_GetUsersEnv`(in chanId INT,in groupIds Text,in pluginId INT,in pageOffset int, in returnSize int,in searchTxt text, in stype Text )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_GetUsersEnv`(in chanId INT,in groupIds Text,in pluginId INT,in pageOffset int, in returnSize int,in searchTxt text, in stype Text )
 BEGIN
 select 
 ud.uid,
@@ -17765,7 +17765,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_get_embedbuilderByPluginId`(IN pluginId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_get_embedbuilderByPluginId`(IN pluginId INT)
 BEGIN
 
 		select * from formbuilder_embed where plugin_id=pluginId;
@@ -17786,7 +17786,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_get_embedbuilderV2`(in emdCode Text)
+CREATE DEFINER=`root`@`%` PROCEDURE `v7_get_embedbuilderV2`(in emdCode Text)
 BEGIN
 SELECT pa.plugin_id,pa.plugin_name,pav.plugin_web_url, fe.channel_id,ui.uname, ui.uemail,ud.uid,ui.uimageurl, fe.created_date, 
     fe.ready_only, fe.is_disable, fe.frdname, fe.emdfavicom, fe.emdtitle, fe.emddecscription, fe.emdshortdescription,
@@ -17814,7 +17814,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_CreateAppVersionV2`(IN pluginId INT, IN usrid INT, IN pluginVerCode VARCHAR(15), IN pluginUrl VARCHAR(145),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_plugin_CreateAppVersionV2`(IN pluginId INT, IN usrid INT, IN pluginVerCode VARCHAR(15), IN pluginUrl VARCHAR(145),
   IN pluginVerWhatsNew VARCHAR(1055), IN pluginWebUrl VARCHAR(145), IN allowWebAccess BOOL, IN pluginUpdateType CHAR(5),
   IN packageSize BIGINT(20), IN packageChecksum VARCHAR(145), IN chanId INT, IN downloadUrlNA TEXT, 
   IN ulinkAppPrefix TEXT, IN ulinkBundleId TEXT, IN ulinkDomainName TEXT, IN ulinkRelativeUrl TEXT, IN environment VARCHAR(45),ulinkUniqueKey VARCHAR(50), IN uRegKey VARCHAR(250), IN uRegLoc VARCHAR(250), IN uAndroidPackage VARCHAR(145))
@@ -17897,7 +17897,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_CreatePluginApp_v5`(IN appName VARCHAR(145), IN appDesc VARCHAR(245), IN appType CHAR(25),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_plugin_CreatePluginApp_v5`(IN appName VARCHAR(145), IN appDesc VARCHAR(245), IN appType CHAR(25),
                                             IN appIconXHDPI VARCHAR(145), IN appIconHDPI VARCHAR(145), IN appIconMDPI VARCHAR(145), 
                                             IN appIconLDPI VARCHAR(145),IN pluginToken VARCHAR(150), IN tokenType CHAR(5),IN chanId INT,IN isAppDraft BOOL,IN templateId INT,IN ownerUid INT)
 BEGIN
@@ -17982,7 +17982,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_GetAppDetails`(IN pluginId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_plugin_GetAppDetails`(IN pluginId INT, IN chanId INT)
 BEGIN
   SELECT * FROM plugin_app pa
   left JOIN plugin_app_version pav
@@ -18004,7 +18004,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_GetAppDetails_v2`(IN pluginId INT, IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_plugin_GetAppDetails_v2`(IN pluginId INT, IN chanId INT)
 BEGIN
     SELECT pa.*,pav.*, ui.uemail 'owner_email' FROM plugin_app pa
     left JOIN plugin_app_version pav
@@ -18028,7 +18028,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_getAppsSorted`(IN chanId INT,IN templateIds TEXT, IN searchTxt TEXT, IN appActive INT,IN filterByAppType TEXT,IN isAppDraft INT,IN hiddenApp INT, IN pageOffset INT, IN returnSize INT, IN appStatus VARCHAR(20))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_plugin_getAppsSorted`(IN chanId INT,IN templateIds TEXT, IN searchTxt TEXT, IN appActive INT,IN filterByAppType TEXT,IN isAppDraft INT,IN hiddenApp INT, IN pageOffset INT, IN returnSize INT, IN appStatus VARCHAR(20))
 BEGIN
  DECLARE mstr BOOL;
  DECLARE total_apps INT DEFAULT 0;
@@ -18259,7 +18259,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_getAppsSortedCustom`(IN chanId INT,IN templateIds TEXT, IN searchTxt TEXT, IN appActive INT,IN filterByAppType TEXT,IN isAppDraft INT,IN hiddenApp INT, IN pageOffset INT, IN returnSize INT, IN appStatus VARCHAR(20))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_plugin_getAppsSortedCustom`(IN chanId INT,IN templateIds TEXT, IN searchTxt TEXT, IN appActive INT,IN filterByAppType TEXT,IN isAppDraft INT,IN hiddenApp INT, IN pageOffset INT, IN returnSize INT, IN appStatus VARCHAR(20))
 BEGIN
  DECLARE mstr BOOL;
  DECLARE total_apps INT DEFAULT 0;
@@ -18491,7 +18491,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_getAppsSortedEndUserV4`(IN urId INT, IN chanId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v7_plugin_getAppsSortedEndUserV4`(IN urId INT, IN chanId INT)
 BEGIN
 
 
@@ -18660,7 +18660,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_getAppsSortedV4`(IN chanId INT,IN templateIds TEXT, IN searchTxt TEXT, IN appActive INT,
+CREATE DEFINER=`root`@`%` PROCEDURE `v7_plugin_getAppsSortedV4`(IN chanId INT,IN templateIds TEXT, IN searchTxt TEXT, IN appActive INT,
 IN filterByAppType TEXT,IN isAppDraft INT,IN hiddenApp INT, IN pageOffset INT, IN returnSize INT, IN appStatus VARCHAR(20), IN loggedInUid INT,
 IN showAll INT)
 BEGIN
@@ -19050,7 +19050,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_getAppsSortedWithOwners`(IN chanId INT,IN templateIds TEXT, IN searchTxt TEXT, IN appActive INT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_plugin_getAppsSortedWithOwners`(IN chanId INT,IN templateIds TEXT, IN searchTxt TEXT, IN appActive INT,
 IN filterByAppType TEXT,IN isAppDraft INT,IN hiddenApp INT, IN pageOffset INT, IN returnSize INT, IN appStatus VARCHAR(20), IN loggedInUid INT,
 IN showAll INT)
 BEGIN
@@ -19372,7 +19372,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_plugin_UpdateAppIcon`(IN pluginId INT,IN hideApp BOOL,IN chanId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_plugin_UpdateAppIcon`(IN pluginId INT,IN hideApp BOOL,IN chanId INT)
 BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION 
   BEGIN
@@ -19411,7 +19411,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_saveAPISubCategorydetails_v3`(IN channelId INT, IN catId INT, IN subCatId INT, IN catName TEXT, IN catMethod TEXT, IN pluginId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v7_saveAPISubCategorydetails_v3`(IN channelId INT, IN catId INT, IN subCatId INT, IN catName TEXT, IN catMethod TEXT, IN pluginId INT)
 BEGIN
 	DECLARE sub_cat_id INT default 0;
     DECLARE duplicate_name_count INT default 0;
@@ -19453,7 +19453,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_searchAdminUsers`(IN chanId INT, IN searchTxt TEXT,
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_searchAdminUsers`(IN chanId INT, IN searchTxt TEXT,
 IN pageSize INT, IN pageOffset INT)
 BEGIN
 DECLARE ownerMail VARCHAR(250);
@@ -19510,7 +19510,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_sp_deleteWhiteListIpForPlugin`(IN chanId INT, IN pluginId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_sp_deleteWhiteListIpForPlugin`(IN chanId INT, IN pluginId INT)
 BEGIN
 DELETE FROM plugin_whitelisted_ip WHERE channelid= chanId AND plugin_id = pluginId;
 	SELECT 1;
@@ -19530,7 +19530,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_sp_getPluginWhitelistedIp`(IN chanId INT, IN pluginId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_sp_getPluginWhitelistedIp`(IN chanId INT, IN pluginId INT)
 BEGIN
 SELECT *
 FROM plugin_whitelisted_ip
@@ -19552,7 +19552,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_toggleApiPublicKey`(IN channelId INT, IN catId INT, IN subCatId INT, IN checked INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_toggleApiPublicKey`(IN channelId INT, IN catId INT, IN subCatId INT, IN checked INT)
 BEGIN
 	DECLARE output INT DEFAULT 0;
 	IF subCatId = 0 THEN
@@ -19587,7 +19587,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_updateEmbedBuilderUrl_v2`(in pluginId int,in chanId int,in readOnly int,IN disabled INT,in embed_Code text,IN type Text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_updateEmbedBuilderUrl_v2`(in pluginId int,in chanId int,in readOnly int,IN disabled INT,in embed_Code text,IN type Text)
 BEGIN
 	IF(type = "update_disabled") THEN
 		 IF exists(select * from formbuilder_embed where channel_id=chanId and plugin_id=pluginId)then
@@ -19618,7 +19618,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v7_updatestatusappdetails`(IN channelId INT, IN statusApp TINYINT, IN statusAppColor VARCHAR(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v7_updatestatusappdetails`(IN channelId INT, IN statusApp TINYINT, IN statusAppColor VARCHAR(10))
 BEGIN
 /*
 =======================================================================================================================================
@@ -19666,7 +19666,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v8_diy_UpdateChannelBranding`(IN chanName TEXT, IN chanId TEXT,
+CREATE DEFINER=`root`@`%` PROCEDURE `v8_diy_UpdateChannelBranding`(IN chanName TEXT, IN chanId TEXT,
     IN pageTitle TEXT,IN pageDescription TEXT,IN favIcon TEXT,IN subDomain TEXT,IN keepBranding BOOL,IN appLogo_XXHDPI TEXT, IN appLogo_XHDPI TEXT,IN appLogo_HDPI TEXT,IN appLogo_MDPI TEXT,IN appLogo_LDPI TEXT,IN primaryColor VARCHAR(10),IN backgroundColor varchar(10),IN fontColor varchar(10),
     IN appName TEXT,IN aboutDescVal TEXT)
 BEGIN
@@ -19717,7 +19717,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v8_plugin_GetAppPropertiesV3`(IN pluginId INT, IN chanId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v8_plugin_GetAppPropertiesV3`(IN pluginId INT, IN chanId INT)
 BEGIN
 Declare devUser INT DEFAULT 0;
 Declare betaUser INT DEFAULT 0;
@@ -19831,7 +19831,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v8_plugin_UpdateAppPoperties_v2`(IN pluginId INT,IN hideApp BOOL,IN packageWebUrl TEXT,IN pluginShowStatusbar BOOL,IN pluginStatusbarColor VARCHAR(40),
+CREATE DEFINER=`root`@`%` PROCEDURE `v8_plugin_UpdateAppPoperties_v2`(IN pluginId INT,IN hideApp BOOL,IN packageWebUrl TEXT,IN pluginShowStatusbar BOOL,IN pluginStatusbarColor VARCHAR(40),
     IN pluginStatusbarStyle VARCHAR(10),IN pluginHideCloseBtn BOOL,IN pluginCloseBtnColor VARCHAR(10),IN pluginAllowTextCopy BOOL,IN pluginAllowScreenShot BOOL,
     IN pluginAllowWebAccess BOOL,IN installType CHAR(9), IN chanId INT,IN supportEmail VARCHAR(150), IN supportPhone VARCHAR(150),  
     IN adminPanelUrl TEXT,IN pluginAllowHttpServe BOOL,IN pluginAllowPhonePortrait BOOL,IN pluginAllowPhoneLandscape BOOL,IN pluginAllowTabletPortrait BOOL,IN pluginAllowTabletLandscape BOOL,
@@ -19918,7 +19918,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v8_saveAPISubCategorydetails`(IN channelId INT, IN catId INT, IN subCatId INT, IN catName TEXT, IN catMethod TEXT, IN pluginId INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `v8_saveAPISubCategorydetails`(IN channelId INT, IN catId INT, IN subCatId INT, IN catName TEXT, IN catMethod TEXT, IN pluginId INT)
 BEGIN
 	DECLARE sub_cat_id INT DEFAULT 0;
     DECLARE duplicate_name_count INT DEFAULT 0;
@@ -19970,7 +19970,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE PROCEDURE `v9_diy_GetCatAPILIST`(IN chanId INT, IN globalChannelId INT, IN pluginId INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `v9_diy_GetCatAPILIST`(IN chanId INT, IN globalChannelId INT, IN pluginId INT)
 BEGIN
 SELECT api_category_id, cat_name, cat_desc, cat_image_url, scheme_type, channel_id, create_on, created_by, updated_on, cat_type, 
 		sub_category_id, sub_category_name, sub_category_desc,sub_created_on,sub_modify_on ,category_id, sub_category_method,
@@ -19997,4 +19997,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-28 10:42:50
+-- Dump completed on 2024-12-02 12:08:13

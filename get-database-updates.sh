@@ -71,9 +71,9 @@ export DRONAHQ_LICENSE_URL="https://license.dronahq.com"
 
 current_version=''
 
-if [ -f "version" ]; then
-  current_version=$(head -n 1 version)
-fi
+# if [ -f "version" ]; then
+#   current_version=$(head -n 1 version)
+# fi
 
 if [ -z "$current_version" ]; then
   read -p "Enter current version to update from: " current_version
