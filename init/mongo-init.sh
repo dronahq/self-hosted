@@ -31,7 +31,7 @@ echo "User created successfully."
 # Restore the database from the dump file
 if [ -f /mongo-init.dump ]; then
   echo "Restoring MongoDB database from /mongo-init.dump..."
-  mongorestore --archive < /mongo-init.dump
+  mongorestore --nsFrom "dronahq_internal.*" --nsTo "${MONGO_INITDB_DATABASE}.*" --archive < /mongo-init.dump
   echo "Database restored successfully."
 else
   echo "No dump file found at /mongo-init.dump, skipping restore."
