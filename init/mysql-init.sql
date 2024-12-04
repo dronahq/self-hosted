@@ -2943,6 +2943,29 @@ LOCK TABLES `kftimespent` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `lic_channel_limit`
+--
+
+DROP TABLE IF EXISTS `lic_channel_limit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `lic_channel_limit` (
+  `channelid` int unsigned NOT NULL,
+  `template_count` int unsigned NOT NULL,
+  PRIMARY KEY (`channelid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='Record different parameters allowed or not in a channel';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lic_channel_limit`
+--
+
+LOCK TABLES `lic_channel_limit` WRITE;
+/*!40000 ALTER TABLE `lic_channel_limit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lic_channel_limit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `license_machine_mapping`
 --
 
