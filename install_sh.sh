@@ -59,14 +59,14 @@ log_warn() {
   done
 }
 
-# read -p "Enter DronaHQ License Proxy url. If you dont need to setup proxy, press Enter: " SELF_HOSTED_LICENSE_URL
-# if [ -z "$SELF_HOSTED_LICENSE_URL" ]; then
-#   SELF_HOSTED_LICENSE_URL="https://license.dronahq.com"
-# fi
+# read -p "Enter DronaHQ License Proxy url. If you dont need to setup proxy, press Enter: " DHQ_SELF_HOSTED_LICENSE_URL
+DHQ_SELF_HOSTED_LICENSE_URL=''
 
-SELF_HOSTED_LICENSE_URL="https://license.dronahq.com"
+if [ -z "$DHQ_SELF_HOSTED_LICENSE_URL" ]; then
+  DHQ_SELF_HOSTED_LICENSE_URL="https://license.dronahq.com"
+fi
 
-log_step "DronaHQ License Proxy set as $SELF_HOSTED_LICENSE_URL"
+log_step "DronaHQ License Proxy set as $DHQ_SELF_HOSTED_LICENSE_URL"
 
 echo ''
 
@@ -121,7 +121,7 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
     fi
   else
     log_step 'downloading...'
-    curl -L -XGET -o master.zip $SELF_HOSTED_LICENSE_URL/self-hosted/master.zip # TODO(hirday): change back to master
+    curl -L -XGET -o master.zip $DHQ_SELF_HOSTED_LICENSE_URL/self-hosted/master.zip # TODO(hirday): change back to master
     log_step 'unpacking...'
     unzip -q master.zip
     mv master self-hosted # TODO(hirday): change back to master
@@ -182,7 +182,7 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
   echo "# " >> dronahq.env
   echo "" >> dronahq.env
 
-  status=`curl --insecure --silent --connect-timeout 8 --output /dev/null $SELF_HOSTED_LICENSE_URL/validate?key=$licenseKey -I -w "%{http_code}\n"`
+  status=`curl --insecure --silent --connect-timeout 8 --output /dev/null $DHQ_SELF_HOSTED_LICENSE_URL/validate?key=$licenseKey -I -w "%{http_code}\n"`
 
   # echo "$status"
 

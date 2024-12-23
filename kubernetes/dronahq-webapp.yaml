@@ -15,7 +15,7 @@ spec:
         app: webapp
     spec:
       containers:
-        - image: dronahq/self-hosted:3.1.4-stable
+        - image: dronahq/self-hosted:3.4.4-stable
           imagePullPolicy: Always
           name: webapp
           ports:
@@ -26,45 +26,35 @@ spec:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: license_key
-
             - name: BUILDER_URL
               value: "http://localhost:8080"
-
+            - name: FILE_UPLOAD_TYPE
+              value: "aws"
             - name: MYSQL_HOST
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: mysql_host
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: dronahqsecrets
-                  key: mysql_user
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: mysql_password
-
             - name: MONGODB_HOST
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: mongodb_host
-            - name: MONGODB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: dronahqsecrets
-                  key: mongodb_user
             - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: mongodb_password
-
-            - name: FILE_UPLOAD_TYPE
-              value: "aws"
-
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: dronahqsecrets
+                  key: aws_s3_region
             - name: AWS_S3_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -75,24 +65,18 @@ spec:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: aws_s3_access_key_secret
-            - name: AWS__S3_REGION
-              valueFrom:
-                secretKeyRef:
-                  name: dronahqsecrets
-                  key: aws_s3_region
             - name: AWS_S3_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: aws_s3_bucket_name
-
           resources:
             limits:
-              limit: "4"
-              memory: 16384M
+              limit: "1.5"
+              memory: 3072M
             requests:
-              cpu: "2"
-              memory: 8192M
+              cpu: "0.5"
+              memory: 1024M
       restartPolicy: Always
 ---
 apiVersion: v1
