@@ -15,7 +15,7 @@ spec:
         app: webapp
     spec:
       containers:
-        - image: dronahq/self-hosted:2.2.7
+        - image: dronahq/self-hosted:3.4.4-stable
           imagePullPolicy: Always
           name: webapp
           ports:
@@ -30,27 +30,27 @@ spec:
               value: "http://localhost:8080"
             - name: FILE_UPLOAD_TYPE
               value: "aws"
-            - name: DHQ_MYSQL_HOST
+            - name: MYSQL_HOST
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: mysql_host
-            - name: DHQ_MYSQL_PASSWORD
+            - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: mysql_password
-            - name: DHQ_MONGODB_HOST
+            - name: MONGODB_HOST
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: mongodb_host
-            - name: DHQ_MONGODB_PASSWORD
+            - name: MONGODB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
                   key: mongodb_password
-            - name: DHQ_AWS_REGION
+            - name: AWS_REGION
               valueFrom:
                 secretKeyRef:
                   name: dronahqsecrets
