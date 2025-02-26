@@ -123,9 +123,9 @@ read -p "Do you want to run your databases on ${CYAN}Docker containers${NORMAL} 
 # generating environment
 log_step "Generating environment file: ${GREEN}dronahq.env${NORMAL}"
 
-echo "# DronaHQ Environment File" >dronahq.env
-echo "BUILDER_URL=http://localhost" >>dronahq.env
-echo "" >>dronahq.env
+echo "# DronaHQ Environment File" > dronahq.env
+echo "BUILDER_URL=http://localhost" >> dronahq.env
+echo "" >> dronahq.env
 
 if [ "$containerdbs" == "y" ]; then
 
@@ -136,50 +136,53 @@ if [ "$containerdbs" == "y" ]; then
 
   log_step "Generating random credentials for databases. You can modify variable values as per requirement."
 
-  echo "MYSQL_HOST=dronahq-self-hosted-mysqldb" >>dronahq.env
-  echo "MYSQL_USER=dronahq" >>dronahq.env
-  echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >>dronahq.env
-  echo "" >>dronahq.env
+  echo "MYSQL_HOST=dronahq-self-hosted-mysqldb" >> dronahq.env
+  echo "MYSQL_USER=dronahq" >> dronahq.env
+  echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >> dronahq.env
+  echo "MYSQL_DATABASE=dronahq_internal" >> dronahq.env
+  echo "" >> dronahq.env
 
-  echo "MONGODB_HOST=dronahq-self-hosted-mongodb" >>dronahq.env
-  echo "MONGODB_USER=dronahq" >>dronahq.env
-  echo "MONGODB_PASSWORD=$MONGO_PASSWORD" >>dronahq.env
-  echo "" >>dronahq.env
+  echo "MONGODB_HOST=dronahq-self-hosted-mongodb" >> dronahq.env
+  echo "MONGODB_USER=dronahq" >> dronahq.env
+  echo "MONGODB_PASSWORD=$MONGO_PASSWORD" >> dronahq.env
+  echo "MONGODB_DATABASE=dronahq_internal" >> dronahq.env
+  echo "" >> dronahq.env
 
-  echo "# Default variables required for Mongo and MySQL container" >>dronahq.env
+  echo "# Default variables required for Mongo and MySQL container" >> dronahq.env
   echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> dronahq.env
-  echo "MYSQL_DATABASE=db5x" >> dronahq.env
-  echo "" >>dronahq.env
+  echo "" >> dronahq.env
   echo "MONGO_INITDB_ROOT_USERNAME=root" >> dronahq.env
   echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_ROOT_PASSWORD" >> dronahq.env
-  echo "MONGO_INITDB_DATABASE=db5x_studio" >> dronahq.env
-  echo "" >>dronahq.env
+  echo "MONGO_INITDB_DATABASE=dronahq_internal" >> dronahq.env
+  echo "" >> dronahq.env
 
 else
+
   log_step "Creating placeholder variables for database containers. Make sure to replace your creadentials once this process is complete."
 
-  echo "MYSQL_HOST=<MYSQL HOST>" >>dronahq.env
-  echo "MYSQL_USER=<MYSQL USER>" >>dronahq.env
-  echo "MYSQL_PASSWORD=<MYSQL PASSWORD>" >>dronahq.env
-  echo "" >>dronahq.env
-
-  echo "MONGODB_HOST=<MONGO HOST>" >>dronahq.env
-  echo "MONGODB_USER=<MONGO USER>" >>dronahq.env
-  echo "MONGODB_PASSWORD=<MONGO PASSWORD>" >>dronahq.env
-  echo "" >>dronahq.env
+  echo "MYSQL_HOST=<MYSQL HOST>" >> dronahq.env
+  echo "MYSQL_USER=<MYSQL USER>" >> dronahq.env
+  echo "MYSQL_PASSWORD=<MYSQL PASSWORD>" >> dronahq.env
+  echo "MYSQL_DATABASE=<MYSQL DATABASE>" >> dronahq.env
+  echo "" >> dronahq.env
+  echo "MONGODB_HOST=<MONGO HOST>" >> dronahq.env
+  echo "MONGODB_USER=<MONGO USER>" >> dronahq.env
+  echo "MONGODB_PASSWORD=<MONGO PASSWORD>" >> dronahq.env
+  echo "MONGODB_DATABASE=<MONGO DATABASE>" >> dronahq.env
+  echo "" >> dronahq.env
 fi
 
-echo "" >>dronahq.env
-echo "# Your dronahq license key here" >>dronahq.env
-echo "LICENSE_KEY=$licenseKey" >>dronahq.env
-echo "" >>dronahq.env
-  
+echo "" >> dronahq.env
+echo "# Your dronahq license key here" >> dronahq.env
+echo "LICENSE_KEY=$licenseKey" >> dronahq.env
+echo "" >> dronahq.env
+
 echo "# Add other environment variables" >> dronahq.env
 echo "# Reference: https://docs.dronahq.com/self-hosted-deployment/environment-variables" >> dronahq.env
 echo "# " >> dronahq.env
 echo "" >> dronahq.env
 
-log_step "you can configure extra variables for extended functionality. Refer link: https://docs.dronahq.com/self-hosted-deployment/environment-variables"
+log_step "you can configure extra variables in dronahq.env file for extended functionality. Refer link: https://docs.dronahq.com/self-hosted-deployment/environment-variables"
 
 log_step "Hurray ! Your setup is done."
 echo ""

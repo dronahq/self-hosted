@@ -15,7 +15,7 @@ spec:
         app: webapp
     spec:
       containers:
-        - image: dronahq/self-hosted:3.4.4-stable
+        - image: dronahq/self-hosted:3.6.0-stable
           imagePullPolicy: Always
           name: webapp
           ports:

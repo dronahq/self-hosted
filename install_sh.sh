@@ -140,55 +140,56 @@ if [ ! -d "$DOCKER_CONTEXT" ]; then
 
   cp ./init/nginx.conf nginx.conf
 
+  # validating license key
+  echo '';
+  read -p "Enter your ${CYAN}DronaHQ LICENSE_KEY${NORMAL} here: " licenseKey
+
+  status=`curl --insecure --silent --connect-timeout 8 --output /dev/null $DRONAHQ_LICENSE_URL/validate?key=$licenseKey -I -w "%{http_code}\n"`
+
+  if [[ "$status" != "202" ]]; then
+    error_exit "Invalid LICENSE_KEY. Please try again."
+  fi
+
+  echo "# DronaHQ Environment File" > dronahq.env
+  echo "BUILDER_URL=http://localhost" >> dronahq.env
+  echo "" >> dronahq.env
+
   MYSQL_ROOT_PASSWORD="$(uuidgen | base64 | head -c 32)"
   MYSQL_PASSWORD="$(uuidgen | base64 | head -c 32)"
   MONGO_ROOT_PASSWORD="$(uuidgen | base64 | head -c 32)"
   MONGO_PASSWORD="$(uuidgen | base64 | head -c 32)"
 
-  echo "# DronaHQ Environment File" > dronahq.env
-  echo "BUILDER_URL=http://localhost" >> dronahq.env
-  echo "" >> dronahq.env
-  
   log_step "Generating random credentials for databases. You can modify variable values as per requirement."
 
   echo "MYSQL_HOST=dronahq-self-hosted-mysqldb" >> dronahq.env
   echo "MYSQL_USER=dronahq" >> dronahq.env
   echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >> dronahq.env
+  echo "MYSQL_DATABASE=dronahq_internal" >> dronahq.env
   echo "" >> dronahq.env
 
   echo "MONGODB_HOST=dronahq-self-hosted-mongodb" >> dronahq.env
   echo "MONGODB_USER=dronahq" >> dronahq.env
   echo "MONGODB_PASSWORD=$MONGO_PASSWORD" >> dronahq.env
+  echo "MONGODB_DATABASE=dronahq_internal" >> dronahq.env
   echo "" >> dronahq.env
 
   echo "# Default variables required for Mongo and MySQL container" >> dronahq.env
   echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> dronahq.env
-  echo "MYSQL_DATABASE=db5x" >> dronahq.env
   echo "" >> dronahq.env
   echo "MONGO_INITDB_ROOT_USERNAME=root" >> dronahq.env
   echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_ROOT_PASSWORD" >> dronahq.env
-  echo "MONGO_INITDB_DATABASE=db5x_studio" >> dronahq.env
-  echo "" >> dronahq.env
-  
-  log_step 'setting environment variables'
-  read -p "Enter your license key: " licenseKey
+  echo "MONGO_INITDB_DATABASE=dronahq_internal" >> dronahq.env
+  echo "" >> dronahq.env" >> dronahq.env
 
+  echo "" >> dronahq.env
   echo "# Your dronahq license key here" >> dronahq.env
   echo "LICENSE_KEY=$licenseKey" >> dronahq.env
   echo "" >> dronahq.env
-  
+
   echo "# Add other environment variables" >> dronahq.env
   echo "# Reference: https://docs.dronahq.com/self-hosted-deployment/environment-variables" >> dronahq.env
   echo "# " >> dronahq.env
   echo "" >> dronahq.env
-
-  status=`curl --insecure --silent --connect-timeout 8 --output /dev/null $DHQ_SELF_HOSTED_LICENSE_URL/validate?key=$licenseKey -I -w "%{http_code}\n"`
-
-  # echo "$status"
-
-  if [[ "$status" != "202" ]]; then
-    error_exit "License Key you entered is Invalid. Please try again with valid key".
-  fi
 
   if ! command_present docker; then
     # shellcheck disable=2016
